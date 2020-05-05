@@ -48,6 +48,28 @@ for (let i = 0; i < 4; i++) {
 }
 ```
 
+### codeTimeTransformer
+
+For example, the generated js code is:
+
+```js
+"use strict";
+const _0 = Date.now();
+for (let i = 0; i < 4; i++) {
+    const _1 = Date.now();
+    let j = i;
+    console.info("demo/index.ts" + ":" + 2 + ":" + 3 + ": " + (Date.now() - _1));
+    const _2 = Date.now();
+    while (j < 4) {
+        const _3 = Date.now();
+        j++;
+        console.info("demo/index.ts" + ":" + 4 + ":" + 5 + ": " + (Date.now() - _3));
+    }
+    console.info("demo/index.ts" + ":" + 3 + ":" + 3 + ": " + (Date.now() - _2));
+}
+console.info("demo/index.ts" + ":" + 1 + ":" + 1 + ": " + (Date.now() - _0));
+```
+
 ## usage
 
 ### with ttypescript

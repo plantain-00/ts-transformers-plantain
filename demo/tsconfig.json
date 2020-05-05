@@ -5,7 +5,7 @@
     "plugins": [
       {
         "transform": "../dist",
-        "import": "executedCodeTransformer",
+        "import": "codeTimeTransformer",
         "type": "raw"
       },
     ]
