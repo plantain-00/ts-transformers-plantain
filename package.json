@@ -1,0 +1,49 @@
+{
+  "name": "ts-transformers-plantain",
+  "version": "0.0.1",
+  "description": "Some custom typescript transformers.",
+  "main": "nodejs/index.js",
+  "scripts": {
+    "build": "clean-scripts build",
+    "lint": "clean-scripts lint",
+    "test": "clean-scripts test",
+    "fix": "clean-scripts fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plantain-00/ts-transformers-plantain.git"
+  },
+  "author": "York",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/plantain-00/ts-transformers-plantain/issues"
+  },
+  "homepage": "https://github.com/plantain-00/ts-transformers-plantain#readme",
+  "devDependencies": {
+    "@commitlint/cli": "8.3.5",
+    "@commitlint/config-conventional": "8.3.4",
+    "@types/jasmine": "3.5.10",
+    "@typescript-eslint/eslint-plugin": "2.31.0",
+    "@typescript-eslint/parser": "2.31.0",
+    "clean-scripts": "1.12.3",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-plugin-plantain": "0.2.0",
+    "jasmine": "3.5.0",
+    "markdownlint-cli": "0.23.0",
+    "no-unused-export": "1.10.3",
+    "rimraf": "3.0.2",
+    "rollup": "2.7.6",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "rollup-plugin-uglify": "6.0.4",
+    "type-coverage": "2.4.3",
+    "typescript": "3.8.3"
+  },
+  "module": "browser/index.js",
+  "unpkg": "ts-transformers-plantain.min.js",
+  "jsdelivr": "ts-transformers-plantain.min.js",
+  "types": "nodejs/index.d.ts",
+  "typeCoverage": {
+    "atLeast": 100
+  }
+}
