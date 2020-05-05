@@ -4,21 +4,15 @@ const jsFiles = `"*.config.js"`
 module.exports = {
   build: [
     'rimraf dist/',
-    {
-      back: 'tsc -p src/tsconfig.nodejs.json',
-      front: [
-        'tsc -p src/tsconfig.browser.json',
-        'rollup --config rollup.config.js'
-      ]
-    }
+    'tsc -p src',
+    'ttsc -p demo'
   ],
   lint: {
     ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
     export: `no-unused-export ${tsFiles} --strict --need-module tslib`,
     commit: `commitlint --from=HEAD~1`,
     markdown: `markdownlint README.md`,
-    typeCoverage: 'type-coverage -p src/tsconfig.nodejs.json --strict',
-    typeCoverageBrowser: 'type-coverage -p src/tsconfig.browser.json --strict'
+    typeCoverage: 'type-coverage -p src --strict'
   },
   test: [
     'tsc -p spec',

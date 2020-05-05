@@ -18,6 +18,5 @@ Some custom typescript transformers.
 ## usage
 
 ```ts
-import TsTransformersPlantain from "ts-transformers-plantain";
-// <script src="./node_modules/ts-transformers-plantain/ts-transformers-plantain.min.js"></script>
+import { executedCodeTransformer } from "ts-transformers-plantain";
 ```

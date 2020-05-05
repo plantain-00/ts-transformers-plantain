@@ -1,5 +1,1 @@
-/**
- * @public
- */
-export default class TsTransformersPlantain {
-}
+export * from './executed-code'
