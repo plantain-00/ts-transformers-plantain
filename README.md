@@ -15,8 +15,65 @@ Some custom typescript transformers.
 
 `yarn add ts-transformers-plantain`
 
-## usage
+## features
+
+### executedCodeTransformer
+
+For every statements, prepend a console log of file name and line number, so when the statement is executed, the file name and line number will be logged in console.
+
+for example, the source code is:
 
 ```ts
-import { executedCodeTransformer } from "ts-transformers-plantain";
+for (let i = 0; i < 4; i++) {
+  let j = i
+  while (j < 4) {
+    j++
+  }
+}
+```
+
+then the emitted js file is:
+
+```js
+"use strict";
+console.info("demo/index.ts" + ":" + 1 + ":" + 1);
+for (let i = 0; i < 4; i++) {
+    console.info("demo/index.ts" + ":" + 2 + ":" + 3);
+    let j = i;
+    console.info("demo/index.ts" + ":" + 3 + ":" + 3);
+    while (j < 4) {
+        console.info("demo/index.ts" + ":" + 4 + ":" + 5);
+        j++;
+    }
+}
+```
+
+## usage
+
+### with ttypescript
+
+```txt
+"plugins": [
+  {
+    "transform": "ts-transformers-plantain",
+    "import": "executedCodeTransformer",
+    "type": "raw"
+  },
+]
+```
+
+### with ts-loader
+
+```txt
+import { executedCodeTransformer } from "ts-transformers-plantain"
+
+{
+  test: /\.ts$/,
+  loader: 'ts-loader',
+  options: {
+    getCustomTransformers: (program) => ({
+      before: [executedCodeTransformer]
+    })
+  }
+}
 ```
