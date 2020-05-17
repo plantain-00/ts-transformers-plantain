@@ -93,6 +93,7 @@ import { executedCodeTransformer } from "ts-transformers-plantain"
   test: /\.ts$/,
   loader: 'ts-loader',
   options: {
+    transpileOnly: true,
     getCustomTransformers: (program) => ({
       before: [executedCodeTransformer]
     })

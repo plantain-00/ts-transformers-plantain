@@ -1,11 +1,12 @@
-const tsFiles = `"src/**/*.ts" "spec/**/*.ts"`
+const tsFiles = `"src/**/*.ts"`
 const jsFiles = `"*.config.js"`
 
-module.exports = {
+export default {
   build: [
     'rimraf dist/',
     'tsc -p src',
-    'ttsc -p demo'
+    'ttsc -p demo',
+    'webpack --config demo/webpack.config.ts'
   ],
   lint: {
     ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
@@ -14,9 +15,6 @@ module.exports = {
     markdown: `markdownlint README.md`,
     typeCoverage: 'type-coverage -p src --strict'
   },
-  test: [
-    'tsc -p spec',
-    'jasmine'
-  ],
+  test: [],
   fix: `eslint --ext .js,.ts ${tsFiles} ${jsFiles} --fix`
 }

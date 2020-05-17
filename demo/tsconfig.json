@@ -9,5 +9,8 @@
         "type": "raw"
       },
     ]
-  }
+  },
+  "files": [
+    "index.ts"
+  ]
 }
