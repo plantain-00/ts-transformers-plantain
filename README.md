@@ -36,13 +36,13 @@ then the emitted js file is:
 
 ```js
 "use strict";
-console.info("demo/index.ts" + ":" + 1 + ":" + 1);
+console.debug("[executed code]demo/index.ts:1:1");
 for (let i = 0; i < 4; i++) {
-    console.info("demo/index.ts" + ":" + 2 + ":" + 3);
+    console.debug("[executed code]demo/index.ts:2:3");
     let j = i;
-    console.info("demo/index.ts" + ":" + 3 + ":" + 3);
+    console.debug("[executed code]demo/index.ts:3:3");
     while (j < 4) {
-        console.info("demo/index.ts" + ":" + 4 + ":" + 5);
+        console.debug("[executed code]demo/index.ts:4:5");
         j++;
     }
 }
@@ -54,20 +54,33 @@ For example, the generated js code is:
 
 ```js
 "use strict";
-const _0 = Date.now();
+var _0 = Date.now();
 for (let i = 0; i < 4; i++) {
-    const _1 = Date.now();
+    var _1 = Date.now();
     let j = i;
-    console.info("demo/index.ts" + ":" + 2 + ":" + 3 + ": " + (Date.now() - _1));
-    const _2 = Date.now();
-    while (j < 4) {
-        const _3 = Date.now();
-        j++;
-        console.info("demo/index.ts" + ":" + 4 + ":" + 5 + ": " + (Date.now() - _3));
+    var _1_time = Date.now() - _1;
+    if (_1_time > 0) {
+        console.debug("[code time]demo/index.ts:2:3: " + _1_time);
     }
-    console.info("demo/index.ts" + ":" + 3 + ":" + 3 + ": " + (Date.now() - _2));
+    var _2 = Date.now();
+    while (j < 4) {
+        var _3 = Date.now();
+        j++;
+        var _3_time = Date.now() - _3;
+        if (_3_time > 0) {
+            console.debug("[code time]demo/index.ts:4:5: " + _3_time);
+        }
+    }
+    var _2_time = Date.now() - _2;
+    if (_2_time > 0) {
+        console.debug("[code time]demo/index.ts:3:3: " + _2_time);
+    }
 }
-console.info("demo/index.ts" + ":" + 1 + ":" + 1 + ": " + (Date.now() - _0));
+var _0_time = Date.now() - _0;
+if (_0_time > 0) {
+    console.debug("[code time]demo/index.ts:1:1: " + _0_time);
+}
+
 ```
 
 ## usage

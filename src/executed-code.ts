@@ -8,6 +8,16 @@ export const executedCodeTransformer: ts.TransformerFactory<ts.SourceFile> = (co
   const visitor: ts.Visitor = (node) => {
     if (ts.isBlock(node)) {
       transformStatements(sourceFile, node)
+    } else if (ts.isArrowFunction(node) && !ts.isBlock(node.body)) {
+      const pos = node.body.pos
+      const returnStatement = ts.createReturn(node.body)
+      node.body = ts.createBlock(
+        [
+          returnStatement
+        ],
+        true
+      )
+      transformStatements(sourceFile, node.body, pos)
     }
     return ts.visitEachChild(node, visitor, context)
   }
@@ -15,35 +25,31 @@ export const executedCodeTransformer: ts.TransformerFactory<ts.SourceFile> = (co
   return ts.visitNode(sourceFile, visitor)
 }
 
-function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.NodeArray<ts.Statement> }) {
+function transformStatements(
+  sourceFile: ts.SourceFile,
+  node: { statements: ts.NodeArray<ts.Statement> },
+  pos?: number,
+) {
   const statements: ts.Statement[] = []
   for (const statement of node.statements) {
-    const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, statement.getStart(sourceFile))
+    if (statement.pos < 0) {
+      if (pos === undefined) {
+        statements.push(statement)
+        continue
+      }
+    } else {
+      pos = statement.getStart(sourceFile)
+    }
+    const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, pos)
     statements.push(
       ts.createExpressionStatement(ts.createCall(
         ts.createPropertyAccess(
           ts.createIdentifier("console"),
-          ts.createIdentifier("info")
+          ts.createIdentifier("debug")
         ),
         undefined,
         [
-          ts.createBinary(
-            ts.createBinary(
-              ts.createBinary(
-                ts.createBinary(
-                  ts.createStringLiteral(path.relative(process.cwd(), sourceFile.fileName)),
-                  ts.createToken(ts.SyntaxKind.PlusToken),
-                  ts.createStringLiteral(":")
-                ),
-                ts.createToken(ts.SyntaxKind.PlusToken),
-                ts.createNumericLiteral(String(line + 1))
-              ),
-              ts.createToken(ts.SyntaxKind.PlusToken),
-              ts.createStringLiteral(":")
-            ),
-            ts.createToken(ts.SyntaxKind.PlusToken),
-            ts.createNumericLiteral(String(character + 1))
-          )
+          ts.createStringLiteral(`[executed code]${path.relative(process.cwd(), sourceFile.fileName)}:${line + 1}:${character + 1}`),
         ]
       )),
       statement,

@@ -4,3 +4,5 @@ for (let i = 0; i < 4; i++) {
     j++
   }
 }
+
+<button onClick={() => console.info(1)}></button>

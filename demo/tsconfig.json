@@ -5,12 +5,17 @@
     "plugins": [
       {
         "transform": "../dist",
+        "import": "executedCodeTransformer",
+        "type": "raw"
+      },
+      {
+        "transform": "../dist",
         "import": "codeTimeTransformer",
         "type": "raw"
       },
     ]
   },
   "files": [
-    "index.ts"
+    "index.tsx"
   ]
 }

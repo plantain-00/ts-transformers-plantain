@@ -26,8 +26,13 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
       statements.push(statement)
       continue
     }
+    if (statement.pos < 0) {
+      statements.push(statement)
+      continue
+    }
     const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, statement.getStart(sourceFile))
     const variableName = '_' + index++
+    const timeVariableName = variableName + "_time"
     statements.push(
       ts.createVariableStatement(
         undefined,
@@ -44,41 +49,17 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
               []
             )
           )],
-          ts.NodeFlags.Const
+          ts.NodeFlags.None
         )
       ),
       statement,
-      ts.createExpressionStatement(ts.createCall(
-        ts.createPropertyAccess(
-          ts.createIdentifier("console"),
-          ts.createIdentifier("info")
-        ),
+      ts.createVariableStatement(
         undefined,
-        [
-          ts.createBinary(
+        ts.createVariableDeclarationList(
+          [ts.createVariableDeclaration(
+            ts.createIdentifier(timeVariableName),
+            undefined,
             ts.createBinary(
-              ts.createBinary(
-                ts.createBinary(
-                  ts.createBinary(
-                    ts.createBinary(
-                      ts.createStringLiteral(path.relative(process.cwd(), sourceFile.fileName)),
-                      ts.createToken(ts.SyntaxKind.PlusToken),
-                      ts.createStringLiteral(":")
-                    ),
-                    ts.createToken(ts.SyntaxKind.PlusToken),
-                    ts.createNumericLiteral(String(line + 1))
-                  ),
-                  ts.createToken(ts.SyntaxKind.PlusToken),
-                  ts.createStringLiteral(":")
-                ),
-                ts.createToken(ts.SyntaxKind.PlusToken),
-                ts.createNumericLiteral(String(character + 1))
-              ),
-              ts.createToken(ts.SyntaxKind.PlusToken),
-              ts.createStringLiteral(": ")
-            ),
-            ts.createToken(ts.SyntaxKind.PlusToken),
-            ts.createParen(ts.createBinary(
               ts.createCall(
                 ts.createPropertyAccess(
                   ts.createIdentifier("Date"),
@@ -89,10 +70,34 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
               ),
               ts.createToken(ts.SyntaxKind.MinusToken),
               ts.createIdentifier(variableName)
-            ))
-          )
-        ]
-      )),
+            )
+          )],
+          ts.NodeFlags.None
+        )
+      ),
+      ts.createIf(
+        ts.createBinary(
+          ts.createIdentifier(timeVariableName),
+          ts.createToken(ts.SyntaxKind.GreaterThanToken),
+          ts.createNumericLiteral("0")
+        ),
+        ts.createBlock(
+          [ts.createExpressionStatement(ts.createCall(
+            ts.createPropertyAccess(
+              ts.createIdentifier("console"),
+              ts.createIdentifier("debug")
+            ),
+            undefined,
+            [ts.createBinary(
+              ts.createStringLiteral(`[code time]${path.relative(process.cwd(), sourceFile.fileName)}:${line + 1}:${character + 1}: `),
+              ts.createToken(ts.SyntaxKind.PlusToken),
+              ts.createIdentifier(timeVariableName)
+            )]
+          ))],
+          true
+        ),
+        undefined
+      ),
     )
   }
   node.statements = ts.createNodeArray(statements)
