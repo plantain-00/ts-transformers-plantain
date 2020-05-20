@@ -48,6 +48,8 @@ for (let i = 0; i < 4; i++) {
 }
 ```
 
+logger can be disabled by `executed-code:disable` in comment
+
 ### codeTimeTransformer
 
 For example, the generated js code is:
@@ -58,30 +60,27 @@ var _0 = Date.now();
 for (let i = 0; i < 4; i++) {
     var _1 = Date.now();
     let j = i;
-    var _1_time = Date.now() - _1;
-    if (_1_time > 0) {
-        console.debug("[code time]demo/index.ts:2:3: " + _1_time);
+    if (Date.now() !== _1) {
+        console.debug("[code time]demo/index.ts:2:3: " + (Date.now() - _1) + "ms");
     }
     var _2 = Date.now();
     while (j < 4) {
         var _3 = Date.now();
         j++;
-        var _3_time = Date.now() - _3;
-        if (_3_time > 0) {
-            console.debug("[code time]demo/index.ts:4:5: " + _3_time);
+        if (Date.now() !== _3) {
+            console.debug("[code time]demo/index.ts:4:5: " + (Date.now() - _3) + "ms");
         }
     }
-    var _2_time = Date.now() - _2;
-    if (_2_time > 0) {
-        console.debug("[code time]demo/index.ts:3:3: " + _2_time);
+    if (Date.now() !== _2) {
+        console.debug("[code time]demo/index.ts:3:3: " + (Date.now() - _2) + "ms");
     }
 }
-var _0_time = Date.now() - _0;
-if (_0_time > 0) {
-    console.debug("[code time]demo/index.ts:1:1: " + _0_time);
+if (Date.now() !== _0) {
+    console.debug("[code time]demo/index.ts:1:1: " + (Date.now() - _0) + "ms");
 }
-
 ```
+
+logger can be disabled by `code-time:disable` in comment
 
 ## usage
 
