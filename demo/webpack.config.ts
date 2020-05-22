@@ -1,6 +1,5 @@
 import * as webpack from 'webpack'
-import { executedCodeTransformer } from '../src/executed-code'
-import { codeTimeTransformer } from '../src/code-time'
+import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer } from '../src'
 
 export default {
   mode: 'development',
@@ -19,7 +18,7 @@ export default {
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({
-            before: [executedCodeTransformer, codeTimeTransformer]
+            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer]
           })
         }
       },

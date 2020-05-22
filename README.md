@@ -82,6 +82,32 @@ if (Date.now() !== _0) {
 
 logger can be disabled by `code-time:disable` in comment
 
+### lastExecutingCodeTransformer
+
+It can be used to record last executing code before exception, it's useful for environment without stacktrace or clear error message, eg, ExtendScript.
+
+For example, the generated js code is:
+
+```js
+_lastExecutingCode = "demo/index.tsx:1:1";
+for (let i = 0; i < 4; i++) {
+    _lastExecutingCode = "demo/index.tsx:2:3";
+    let j = i;
+    _lastExecutingCode = "demo/index.tsx:7:3";
+    /**
+     * executed-code:disable
+     * code-time:disable
+     */
+    while (j < 4) {
+        _lastExecutingCode = "demo/index.tsx:8:5";
+        j++;
+    }
+}
+_lastExecutingCode = "demo/index.tsx:16:1";
+```
+
+logger can be disabled by `last-executing-code:disable` in comment
+
 ## usage
 
 ### with ttypescript

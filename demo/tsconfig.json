@@ -13,6 +13,11 @@
         "import": "codeTimeTransformer",
         "type": "raw"
       },
+      {
+        "transform": "../dist",
+        "import": "lastExecutingCodeTransformer",
+        "type": "raw"
+      },
     ]
   },
   "files": [
