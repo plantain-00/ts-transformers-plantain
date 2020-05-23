@@ -95,21 +95,58 @@ _lastExecutingCode = "demo/index.tsx:1:1";
 for (let i = 0; i < 4; i++) {
     _lastExecutingCode = "demo/index.tsx:2:3";
     let j = i;
-    _lastExecutingCode = "demo/index.tsx:7:3";
-    /**
-     * executed-code:disable
-     * code-time:disable
-     */
+    _lastExecutingCode = "demo/index.tsx:3:3";
     while (j < 4) {
-        _lastExecutingCode = "demo/index.tsx:8:5";
+        _lastExecutingCode = "demo/index.tsx:4:5";
         j++;
     }
 }
-_lastExecutingCode = "demo/index.tsx:16:1";
 ```
 
 logger can be disabled by `last-executing-code:disable` in comment.
 children logger can be disabled by `last-executing-code:disable-children` in comment
+
+### codeMemoryNodeJsTransformer
+
+For example, the generated js code is:
+
+```js
+"use strict";
+for (let i = 0; i < 4; i++) {
+    let j = i;
+    console.debug("[code memory nodejs]demo/index.tsx:2:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    while (j < 4) {
+        j++;
+        console.debug("[code memory nodejs]demo/index.tsx:4:5: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    }
+    console.debug("[code memory nodejs]demo/index.tsx:3:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+}
+console.debug("[code memory nodejs]demo/index.tsx:1:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+```
+
+logger can be disabled by `code-memory-nodejs:disable` in comment.
+children logger can be disabled by `code-memory-nodejs:disable-children` in comment.
+
+### codeMemoryBrowserTransformer
+
+For example, the generated js code is:
+
+```js
+"use strict";
+for (let i = 0; i < 4; i++) {
+    let j = i;
+    console.debug("[code memory browser]demo/index.tsx:2:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
+    while (j < 4) {
+        j++;
+        console.debug("[code memory browser]demo/index.tsx:4:5: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
+    }
+    console.debug("[code memory browser]demo/index.tsx:3:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
+}
+console.debug("[code memory browser]demo/index.tsx:1:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
+```
+
+logger can be disabled by `code-memory-browser:disable` in comment.
+children logger can be disabled by `code-memory-browser:disable-children` in comment.
 
 ## usage
 

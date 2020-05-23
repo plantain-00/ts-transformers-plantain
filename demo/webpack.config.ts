@@ -1,5 +1,5 @@
 import * as webpack from 'webpack'
-import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer } from '../src'
+import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer } from '../src'
 
 export default {
   mode: 'development',
@@ -18,7 +18,7 @@ export default {
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({
-            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer]
+            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer]
           })
         }
       },

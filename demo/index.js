@@ -3,6 +3,7 @@ console.debug("[executed code]demo/index.tsx:2:1");
 var _0 = Date.now();
 // last-executing-code:disable
 let _lastExecutingCode;
+console.debug("[code memory nodejs]demo/index.tsx:2:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 if (Date.now() !== _0) {
     console.debug("[code time]demo/index.tsx:2:1: " + (Date.now() - _0) + "ms");
 }
@@ -14,6 +15,7 @@ for (let i = 0; i < 4; i++) {
     var _4 = Date.now();
     _lastExecutingCode = "demo/index.tsx:5:3";
     let j = i;
+    console.debug("[code memory nodejs]demo/index.tsx:5:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
     if (Date.now() !== _4) {
         console.debug("[code time]demo/index.tsx:5:3: " + (Date.now() - _4) + "ms");
     }
@@ -25,8 +27,11 @@ for (let i = 0; i < 4; i++) {
     while (j < 4) {
         _lastExecutingCode = "demo/index.tsx:11:5";
         j++;
+        console.debug("[code memory nodejs]demo/index.tsx:11:5: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
     }
+    console.debug("[code memory nodejs]demo/index.tsx:10:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 }
+console.debug("[code memory nodejs]demo/index.tsx:4:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 if (Date.now() !== _1) {
     console.debug("[code time]demo/index.tsx:4:1: " + (Date.now() - _1) + "ms");
 }
@@ -38,6 +43,7 @@ try {
     var _5 = Date.now();
     _lastExecutingCode = "demo/index.tsx:16:3";
     throw 1;
+    console.debug("[code memory nodejs]demo/index.tsx:16:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
     if (Date.now() !== _5) {
         console.debug("[code time]demo/index.tsx:16:3: " + (Date.now() - _5) + "ms");
     }
@@ -47,10 +53,12 @@ catch {
     var _6 = Date.now();
     // last-executing-code:disable
     console.info(_lastExecutingCode);
+    console.debug("[code memory nodejs]demo/index.tsx:19:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
     if (Date.now() !== _6) {
         console.debug("[code time]demo/index.tsx:19:3: " + (Date.now() - _6) + "ms");
     }
 }
+console.debug("[code memory nodejs]demo/index.tsx:15:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 if (Date.now() !== _2) {
     console.debug("[code time]demo/index.tsx:15:1: " + (Date.now() - _2) + "ms");
 }
@@ -62,6 +70,7 @@ _lastExecutingCode = "demo/index.tsx:26:1";
 function foo() {
     _lastExecutingCode = "demo/index.tsx:27:3 foo";
     console.info(1);
+    console.debug("[code memory nodejs]demo/index.tsx:27:3 foo: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 }
 console.debug("[executed code]demo/index.tsx:30:1");
 _lastExecutingCode = "demo/index.tsx:30:1";
@@ -73,6 +82,7 @@ function bar() {
         var _8 = Date.now();
         _lastExecutingCode = "demo/index.tsx:32:5 baz";
         console.info(2);
+        console.debug("[code memory nodejs]demo/index.tsx:32:5 baz: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
         if (Date.now() !== _8) {
             console.debug("[code time]demo/index.tsx:32:5 baz: " + (Date.now() - _8) + "ms");
         }
@@ -81,6 +91,7 @@ function bar() {
     var _7 = Date.now();
     _lastExecutingCode = "demo/index.tsx:34:3 bar";
     console.info(baz);
+    console.debug("[code memory nodejs]demo/index.tsx:34:3 bar: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
     if (Date.now() !== _7) {
         console.debug("[code time]demo/index.tsx:34:3 bar: " + (Date.now() - _7) + "ms");
     }
@@ -92,6 +103,7 @@ React.createElement("button", { onClick: () => {
         console.debug("[executed code]demo/index.tsx:37:24");
         return console.info(1);
     } });
+console.debug("[code memory nodejs]demo/index.tsx:37:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
 if (Date.now() !== _3) {
     console.debug("[code time]demo/index.tsx:37:1: " + (Date.now() - _3) + "ms");
 }
@@ -103,6 +115,7 @@ class A {
         var _9 = Date.now();
         _lastExecutingCode = "demo/index.tsx:41:5 A.b";
         console.info(1);
+        console.debug("[code memory nodejs]demo/index.tsx:41:5 A.b: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
         if (Date.now() !== _9) {
             console.debug("[code time]demo/index.tsx:41:5 A.b: " + (Date.now() - _9) + "ms");
         }
@@ -112,6 +125,7 @@ class A {
         var _10 = Date.now();
         _lastExecutingCode = "demo/index.tsx:44:5 A.constructor";
         console.info(2);
+        console.debug("[code memory nodejs]demo/index.tsx:44:5 A.constructor: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
         if (Date.now() !== _10) {
             console.debug("[code time]demo/index.tsx:44:5 A.constructor: " + (Date.now() - _10) + "ms");
         }

@@ -22,7 +22,7 @@ export function getFunctionName(node: ts.Node, sourceFile: ts.SourceFile) {
 }
 
 export function isDisabled(
-  type: 'code-time' | 'executed-code' | 'last-executing-code',
+  type: 'code-time' | 'executed-code' | 'last-executing-code' | 'code-memory-nodejs' | 'code-memory-browser',
   childrenOnly: boolean,
   sourceFile: ts.SourceFile,
   ranges?: ts.CommentRange[],
@@ -41,3 +41,5 @@ export function getPosition(sourceFile: ts.SourceFile, start: number, functionNa
   const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, start)
   return `${path.relative(process.cwd(), sourceFile.fileName)}:${line + 1}:${character + 1}${functionName ? ' ' + functionName : ''}`
 }
+
+export const memoryUnit = (1024 * 1024 / 100).toString()
