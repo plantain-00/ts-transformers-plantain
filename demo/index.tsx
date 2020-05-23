@@ -27,4 +27,20 @@ function foo() {
   console.info(1)
 }
 
+function bar() {
+  function baz() {
+    console.info(2)
+  }
+  console.info(baz)
+}
+
 <button onClick={() => console.info(1)}></button>
+
+class A {
+  b() {
+    console.info(1)
+  }
+  constructor() {
+    console.info(2)
+  }
+}

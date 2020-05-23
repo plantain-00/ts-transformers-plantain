@@ -48,7 +48,8 @@ for (let i = 0; i < 4; i++) {
 }
 ```
 
-logger can be disabled by `executed-code:disable` in comment
+logger can be disabled by `executed-code:disable` in comment.
+children logger can be disabled by `executed-code:disable-children` in comment.
 
 ### codeTimeTransformer
 
@@ -80,7 +81,8 @@ if (Date.now() !== _0) {
 }
 ```
 
-logger can be disabled by `code-time:disable` in comment
+logger can be disabled by `code-time:disable` in comment.
+children logger can be disabled by `code-time:disable-children` in comment.
 
 ### lastExecutingCodeTransformer
 
@@ -106,7 +108,8 @@ for (let i = 0; i < 4; i++) {
 _lastExecutingCode = "demo/index.tsx:16:1";
 ```
 
-logger can be disabled by `last-executing-code:disable` in comment
+logger can be disabled by `last-executing-code:disable` in comment.
+children logger can be disabled by `last-executing-code:disable-children` in comment
 
 ## usage
 

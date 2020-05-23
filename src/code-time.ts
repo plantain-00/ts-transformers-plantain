@@ -1,19 +1,23 @@
 import * as ts from 'typescript'
-import * as path from 'path'
+import { getFunctionName, isDisabled, getPosition } from './util'
 
 /**
  * @public
  */
 export const codeTimeTransformer: ts.TransformerFactory<ts.SourceFile> = (context) => sourceFile => {
   const disabledStatements = new Set<ts.Node>()
-  const visitor: ts.Visitor = (node) => {
+  const visitor = (node: ts.Node, functionName?: string): ts.Node => {
     if (disabledStatements.has(node)) {
       return node
     }
-    if (ts.isBlock(node)) {
-      transformStatements(sourceFile, node).map((s) => disabledStatements.add(s))
+    const newFunctionName = getFunctionName(node, sourceFile)
+    if (newFunctionName) {
+      functionName = newFunctionName
     }
-    return ts.visitEachChild(node, visitor, context)
+    if (ts.isBlock(node)) {
+      transformStatements(sourceFile, node, functionName).map((s) => disabledStatements.add(s))
+    }
+    return ts.visitEachChild(node, (node) => visitor(node, functionName), context)
   }
   transformStatements(sourceFile, sourceFile).map((s) => disabledStatements.add(s))
   return ts.visitNode(sourceFile, visitor)
@@ -21,7 +25,11 @@ export const codeTimeTransformer: ts.TransformerFactory<ts.SourceFile> = (contex
 
 let index = 0
 
-function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.NodeArray<ts.Statement> }) {
+function transformStatements(
+  sourceFile: ts.SourceFile,
+  node: { statements: ts.NodeArray<ts.Statement> },
+  functionName?: string,
+) {
   const disabledStatements: ts.Statement[] = []
   const statements: ts.Statement[] = []
   for (const statement of node.statements) {
@@ -30,10 +38,12 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
       continue
     }
     const ranges = ts.getLeadingCommentRanges(sourceFile.text, statement.pos)
-    if (ranges && ranges.some((r) => sourceFile.text.substring(r.pos, r.end).includes('code-time:disable'))) {
-      statements.push(statement)
+    if (isDisabled('code-time', false, sourceFile, ranges)) {
       disabledStatements.push(statement)
-      continue
+      if (!isDisabled('code-time', true, sourceFile, ranges)) {
+        statements.push(statement)
+        continue
+      }
     }
     if (ts.isReturnStatement(statement)
       || ts.isFunctionDeclaration(statement)
@@ -41,7 +51,7 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
       statements.push(statement)
       continue
     }
-    const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, statement.getStart(sourceFile))
+    const position = getPosition(sourceFile, statement.getStart(sourceFile), functionName)
     const variableName = '_' + index++
     statements.push(
       ts.createVariableStatement(
@@ -85,7 +95,7 @@ function transformStatements(sourceFile: ts.SourceFile,node: { statements: ts.No
             undefined,
             [ts.createBinary(
               ts.createBinary(
-                ts.createStringLiteral(`[code time]${path.relative(process.cwd(), sourceFile.fileName)}:${line + 1}:${character + 1}: `),
+                ts.createStringLiteral(`[code time]${position}: `),
                 ts.createToken(ts.SyntaxKind.PlusToken),
                 ts.createParen(ts.createBinary(
                   ts.createCall(
