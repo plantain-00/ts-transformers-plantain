@@ -1,5 +1,5 @@
 import * as ts from 'typescript'
-import { getFunctionName, isDisabled, getPosition } from './util'
+import { getFunctionName, isDisabled, getPosition, isNotExecutableStatement } from './util'
 
 /**
  * @public
@@ -42,6 +42,10 @@ function transformStatements(
   const disabledStatements: ts.Statement[] = []
   const statements: ts.Statement[] = []
   for (const statement of node.statements) {
+    if (isNotExecutableStatement(statement)) {
+      statements.push(statement)
+      continue
+    }
     let start = parentStart
     if (statement.pos < 0) {
       if (parentStart === undefined) {

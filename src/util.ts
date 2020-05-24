@@ -7,7 +7,9 @@ export function getFunctionName(node: ts.Node, sourceFile: ts.SourceFile) {
       return node.name.text
     }
   }
-  if (ts.isMethodDeclaration(node)) {
+  if (ts.isMethodDeclaration(node)
+    || ts.isGetAccessorDeclaration(node)
+    || ts.isSetAccessorDeclaration(node)) {
     if (ts.isClassDeclaration(node.parent)) {
       const className = node.parent.name?.text || 'default'
       return className + '.' + node.name.getText(sourceFile)
@@ -39,7 +41,15 @@ export function isDisabled(
 
 export function getPosition(sourceFile: ts.SourceFile, start: number, functionName?: string) {
   const { line, character } = ts.getLineAndCharacterOfPosition(sourceFile, start)
-  return `${path.relative(process.cwd(), sourceFile.fileName)}:${line + 1}:${character + 1}${functionName ? ' ' + functionName : ''}`
+  return `${getFileName(sourceFile)}:${line + 1}:${character + 1}${functionName ? ' ' + functionName : ''}`
+}
+
+export function getFileName(sourceFile: ts.SourceFile) {
+  return path.relative(process.cwd(), sourceFile.fileName)
 }
 
 export const memoryUnit = (1024 * 1024 / 100).toString()
+
+export function isNotExecutableStatement(node: ts.Node) {
+  return node.modifiers && node.modifiers.some((m) => m.kind === ts.SyntaxKind.DeclareKeyword)
+}

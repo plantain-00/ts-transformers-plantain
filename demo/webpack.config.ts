@@ -1,14 +1,17 @@
 import * as webpack from 'webpack'
-import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer } from '../src'
+import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer, executedCodeCoverageTransformer } from '../src'
 
 export default {
-  mode: 'development',
+  mode: 'production',
   entry: './demo/index.tsx',
   output: {
     filename: '../demo/index2.js',
   },
   resolve: {
     extensions: ['.ts', '.tsx', '.js'],
+  },
+  optimization: {
+    minimize: false
   },
   module: {
     rules: [
@@ -18,7 +21,7 @@ export default {
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({
-            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer]
+            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer, executedCodeCoverageTransformer]
           })
         }
       },

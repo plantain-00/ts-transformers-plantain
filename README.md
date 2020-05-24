@@ -148,6 +148,15 @@ console.debug("[code memory browser]demo/index.tsx:1:1: " + Math.round(performan
 logger can be disabled by `code-memory-browser:disable` in comment.
 children logger can be disabled by `code-memory-browser:disable-children` in comment.
 
+### executedCodeCoverageTransformer
+
+This transformer will collect all executed code line number, `_showCodeCoverage()` will print the result in console, eg:
+
+```txt
+[executed code coverage]demo/index.tsx: 12 / 21 57.14% 27,31,32,34,39,42,45,48,55
+[executed code coverage]total: 12 / 21 57.14%
+```
+
 ## usage
 
 ### with ttypescript

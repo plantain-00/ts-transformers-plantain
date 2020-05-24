@@ -23,6 +23,11 @@
         "import": "codeMemoryNodeJsTransformer",
         "type": "raw"
       },
+      {
+        "transform": "../dist",
+        "import": "executedCodeCoverageTransformer",
+        "type": "raw"
+      },
     ]
   },
   "files": [

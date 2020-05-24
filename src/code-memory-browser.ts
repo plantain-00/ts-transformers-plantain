@@ -1,5 +1,5 @@
 import * as ts from 'typescript'
-import { getFunctionName, isDisabled, getPosition, memoryUnit } from './util'
+import { getFunctionName, isDisabled, getPosition, memoryUnit, isNotExecutableStatement } from './util'
 
 /**
  * @public
@@ -32,6 +32,10 @@ function transformStatements(
   const statements: ts.Statement[] = []
   for (const statement of node.statements) {
     if (statement.pos < 0) {
+      statements.push(statement)
+      continue
+    }
+    if (isNotExecutableStatement(statement)) {
       statements.push(statement)
       continue
     }

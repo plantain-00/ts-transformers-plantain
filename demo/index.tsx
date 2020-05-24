@@ -34,8 +34,6 @@ function bar() {
   console.info(baz)
 }
 
-<button onClick={() => console.info(1)}></button>
-
 class A {
   b() {
     console.info(1)
@@ -43,4 +41,15 @@ class A {
   constructor() {
     console.info(2)
   }
+  get c() {
+    return 1
+  }
+  set c(value: number) {
+    console.info(value)
+  }
 }
+
+declare const _showCodeCoverage: () => void
+_showCodeCoverage();
+
+<button onClick={() => console.info(1)}></button>

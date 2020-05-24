@@ -1,4 +1,95 @@
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
+/* WEBPACK VAR INJECTION */(function(global) {
 const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : global;
 if (!_global._executedCode) {
     _global._executedCode = new Map();
@@ -37,7 +128,7 @@ var _0 = Date.now();
 _executedCodeLines.add(2);
 // last-executing-code:disable
 let _lastExecutingCode;
-console.debug("[code memory nodejs]demo/index.tsx:2:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+console.debug("[code memory browser]demo/index.tsx:2:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 if (Date.now() !== _0) {
     console.debug("[code time]demo/index.tsx:2:1: " + (Date.now() - _0) + "ms");
 }
@@ -51,7 +142,7 @@ for (let i = 0; i < 4; i++) {
     _lastExecutingCode = "demo/index.tsx:5:3";
     _executedCodeLines.add(5);
     let j = i;
-    console.debug("[code memory nodejs]demo/index.tsx:5:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:5:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
     if (Date.now() !== _5) {
         console.debug("[code time]demo/index.tsx:5:3: " + (Date.now() - _5) + "ms");
     }
@@ -65,11 +156,11 @@ for (let i = 0; i < 4; i++) {
         _lastExecutingCode = "demo/index.tsx:11:5";
         _executedCodeLines.add(11);
         j++;
-        console.debug("[code memory nodejs]demo/index.tsx:11:5: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+        console.debug("[code memory browser]demo/index.tsx:11:5: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
     }
-    console.debug("[code memory nodejs]demo/index.tsx:10:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:10:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 }
-console.debug("[code memory nodejs]demo/index.tsx:4:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+console.debug("[code memory browser]demo/index.tsx:4:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 if (Date.now() !== _1) {
     console.debug("[code time]demo/index.tsx:4:1: " + (Date.now() - _1) + "ms");
 }
@@ -83,7 +174,7 @@ try {
     _lastExecutingCode = "demo/index.tsx:16:3";
     _executedCodeLines.add(16);
     throw 1;
-    console.debug("[code memory nodejs]demo/index.tsx:16:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:16:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
     if (Date.now() !== _6) {
         console.debug("[code time]demo/index.tsx:16:3: " + (Date.now() - _6) + "ms");
     }
@@ -94,12 +185,12 @@ catch {
     _executedCodeLines.add(19);
     // last-executing-code:disable
     console.info(_lastExecutingCode);
-    console.debug("[code memory nodejs]demo/index.tsx:19:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:19:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
     if (Date.now() !== _7) {
         console.debug("[code time]demo/index.tsx:19:3: " + (Date.now() - _7) + "ms");
     }
 }
-console.debug("[code memory nodejs]demo/index.tsx:15:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+console.debug("[code memory browser]demo/index.tsx:15:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 if (Date.now() !== _2) {
     console.debug("[code time]demo/index.tsx:15:1: " + (Date.now() - _2) + "ms");
 }
@@ -113,7 +204,7 @@ function foo() {
     _lastExecutingCode = "demo/index.tsx:27:3 foo";
     _executedCodeLines.add(27);
     console.info(1);
-    console.debug("[code memory nodejs]demo/index.tsx:27:3 foo: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:27:3 foo: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 }
 console.debug("[executed code]demo/index.tsx:30:1");
 _lastExecutingCode = "demo/index.tsx:30:1";
@@ -128,7 +219,7 @@ function bar() {
         _lastExecutingCode = "demo/index.tsx:32:5 baz";
         _executedCodeLines.add(32);
         console.info(2);
-        console.debug("[code memory nodejs]demo/index.tsx:32:5 baz: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+        console.debug("[code memory browser]demo/index.tsx:32:5 baz: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
         if (Date.now() !== _9) {
             console.debug("[code time]demo/index.tsx:32:5 baz: " + (Date.now() - _9) + "ms");
         }
@@ -138,7 +229,7 @@ function bar() {
     _lastExecutingCode = "demo/index.tsx:34:3 bar";
     _executedCodeLines.add(34);
     console.info(baz);
-    console.debug("[code memory nodejs]demo/index.tsx:34:3 bar: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+    console.debug("[code memory browser]demo/index.tsx:34:3 bar: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
     if (Date.now() !== _8) {
         console.debug("[code time]demo/index.tsx:34:3 bar: " + (Date.now() - _8) + "ms");
     }
@@ -153,7 +244,7 @@ class A {
         _lastExecutingCode = "demo/index.tsx:39:5 A.b";
         _executedCodeLines.add(39);
         console.info(1);
-        console.debug("[code memory nodejs]demo/index.tsx:39:5 A.b: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+        console.debug("[code memory browser]demo/index.tsx:39:5 A.b: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
         if (Date.now() !== _10) {
             console.debug("[code time]demo/index.tsx:39:5 A.b: " + (Date.now() - _10) + "ms");
         }
@@ -164,7 +255,7 @@ class A {
         _lastExecutingCode = "demo/index.tsx:42:5 A.constructor";
         _executedCodeLines.add(42);
         console.info(2);
-        console.debug("[code memory nodejs]demo/index.tsx:42:5 A.constructor: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+        console.debug("[code memory browser]demo/index.tsx:42:5 A.constructor: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
         if (Date.now() !== _11) {
             console.debug("[code time]demo/index.tsx:42:5 A.constructor: " + (Date.now() - _11) + "ms");
         }
@@ -181,7 +272,7 @@ class A {
         _lastExecutingCode = "demo/index.tsx:48:5 A.c";
         _executedCodeLines.add(48);
         console.info(value);
-        console.debug("[code memory nodejs]demo/index.tsx:48:5 A.c: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+        console.debug("[code memory browser]demo/index.tsx:48:5 A.c: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
         if (Date.now() !== _12) {
             console.debug("[code time]demo/index.tsx:48:5 A.c: " + (Date.now() - _12) + "ms");
         }
@@ -192,7 +283,7 @@ var _3 = Date.now();
 _lastExecutingCode = "demo/index.tsx:53:1";
 _executedCodeLines.add(53);
 _showCodeCoverage();
-console.debug("[code memory nodejs]demo/index.tsx:53:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+console.debug("[code memory browser]demo/index.tsx:53:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 if (Date.now() !== _3) {
     console.debug("[code time]demo/index.tsx:53:1: " + (Date.now() - _3) + "ms");
 }
@@ -204,7 +295,38 @@ React.createElement("button", { onClick: () => {
         console.debug("[executed code]demo/index.tsx:55:24");
         return console.info(1);
     } });
-console.debug("[code memory nodejs]demo/index.tsx:55:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+console.debug("[code memory browser]demo/index.tsx:55:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
 if (Date.now() !== _4) {
     console.debug("[code time]demo/index.tsx:55:1: " + (Date.now() - _4) + "ms");
 }
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ })
+/******/ ]);
