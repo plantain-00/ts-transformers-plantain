@@ -105,6 +105,14 @@ This transformer will collect all executed code line number, `_showCodeCoverage(
 [executed code coverage]total: 12 / 21 57.14%
 ```
 
+### jsxElementPositionTransformer
+
+This transformer will add code position in `data-_position` for all jsx elements, for example:
+
+```txt
+React.createElement("button", { onClick: () => console.info(1), "data-_position": 'demo/index.tsx:55:1' });
+```
+
 ## usage
 
 ### with ttypescript

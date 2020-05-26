@@ -279,7 +279,7 @@ _executedCodeLines.add(55);
 React.createElement("button", { onClick: () => {
         console.debug("[executed code]demo/index.tsx:55:24");
         return console.info(1);
-    } });
+    }, "data-_position": 'demo/index.tsx:55:1' });
 var _code_memory_nodejs_after_4 = process.memoryUsage().heapUsed;
 var _code_memory_nodejs_changes_4 = _code_memory_nodejs_after_4 - _code_memory_nodejs_4;
 if (_code_memory_nodejs_changes_4 > 10485.76) {

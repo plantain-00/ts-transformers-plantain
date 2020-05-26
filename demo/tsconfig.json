@@ -28,6 +28,11 @@
         "import": "executedCodeCoverageTransformer",
         "type": "raw"
       },
+      {
+        "transform": "../dist",
+        "import": "jsxElementPositionTransformer",
+        "type": "raw"
+      },
     ]
   },
   "files": [

@@ -1,5 +1,12 @@
 import * as webpack from 'webpack'
-import { executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer, executedCodeCoverageTransformer } from '../src'
+import {
+  executedCodeTransformer,
+  codeTimeTransformer,
+  lastExecutingCodeTransformer,
+  codeMemoryBrowserTransformer,
+  executedCodeCoverageTransformer,
+  jsxElementPositionTransformer
+} from '../src'
 
 export default {
   mode: 'production',
@@ -21,7 +28,14 @@ export default {
         options: {
           transpileOnly: true,
           getCustomTransformers: () => ({
-            before: [executedCodeTransformer, codeTimeTransformer, lastExecutingCodeTransformer, codeMemoryBrowserTransformer, executedCodeCoverageTransformer]
+            before: [
+              executedCodeTransformer,
+              codeTimeTransformer,
+              lastExecutingCodeTransformer,
+              codeMemoryBrowserTransformer,
+              executedCodeCoverageTransformer,
+              jsxElementPositionTransformer,
+            ]
           })
         }
       },
