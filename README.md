@@ -21,31 +21,12 @@ Some custom typescript transformers.
 
 For every statements, prepend a console log of file name and line number, so when the statement is executed, the file name and line number will be logged in console.
 
-for example, the source code is:
+for example:
 
-```ts
-for (let i = 0; i < 4; i++) {
-  let j = i
-  while (j < 4) {
-    j++
-  }
-}
-```
-
-then the emitted js file is:
-
-```js
-"use strict";
-console.debug("[executed code]demo/index.ts:1:1");
-for (let i = 0; i < 4; i++) {
-    console.debug("[executed code]demo/index.ts:2:3");
-    let j = i;
-    console.debug("[executed code]demo/index.ts:3:3");
-    while (j < 4) {
-        console.debug("[executed code]demo/index.ts:4:5");
-        j++;
-    }
-}
+```txt
+[executed code]demo/index.tsx:1:1
+[executed code]demo/index.tsx:2:3
+[executed code]demo/index.tsx:3:3
 ```
 
 logger can be disabled by `executed-code:disable` in comment.
@@ -53,32 +34,12 @@ children logger can be disabled by `executed-code:disable-children` in comment.
 
 ### codeTimeTransformer
 
-For example, the generated js code is:
+For example:
 
-```js
-"use strict";
-var _0 = Date.now();
-for (let i = 0; i < 4; i++) {
-    var _1 = Date.now();
-    let j = i;
-    if (Date.now() !== _1) {
-        console.debug("[code time]demo/index.ts:2:3: " + (Date.now() - _1) + "ms");
-    }
-    var _2 = Date.now();
-    while (j < 4) {
-        var _3 = Date.now();
-        j++;
-        if (Date.now() !== _3) {
-            console.debug("[code time]demo/index.ts:4:5: " + (Date.now() - _3) + "ms");
-        }
-    }
-    if (Date.now() !== _2) {
-        console.debug("[code time]demo/index.ts:3:3: " + (Date.now() - _2) + "ms");
-    }
-}
-if (Date.now() !== _0) {
-    console.debug("[code time]demo/index.ts:1:1: " + (Date.now() - _0) + "ms");
-}
+```txt
+[code time]demo/index.tsx:3:3: 1ms
+[code time]demo/index.tsx:3:3: 1ms
+[code time]demo/index.tsx:1:1: 16ms
 ```
 
 logger can be disabled by `code-time:disable` in comment.
@@ -88,19 +49,10 @@ children logger can be disabled by `code-time:disable-children` in comment.
 
 It can be used to record last executing code before exception, it's useful for environment without stacktrace or clear error message, eg, ExtendScript.
 
-For example, the generated js code is:
+For example:
 
-```js
-_lastExecutingCode = "demo/index.tsx:1:1";
-for (let i = 0; i < 4; i++) {
-    _lastExecutingCode = "demo/index.tsx:2:3";
-    let j = i;
-    _lastExecutingCode = "demo/index.tsx:3:3";
-    while (j < 4) {
-        _lastExecutingCode = "demo/index.tsx:4:5";
-        j++;
-    }
-}
+```txt
+demo/index.tsx:16:3
 ```
 
 logger can be disabled by `last-executing-code:disable` in comment.
@@ -108,20 +60,12 @@ children logger can be disabled by `last-executing-code:disable-children` in com
 
 ### codeMemoryNodeJsTransformer
 
-For example, the generated js code is:
+For example:
 
-```js
-"use strict";
-for (let i = 0; i < 4; i++) {
-    let j = i;
-    console.debug("[code memory nodejs]demo/index.tsx:2:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
-    while (j < 4) {
-        j++;
-        console.debug("[code memory nodejs]demo/index.tsx:4:5: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
-    }
-    console.debug("[code memory nodejs]demo/index.tsx:3:3: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
-}
-console.debug("[code memory nodejs]demo/index.tsx:1:1: " + Math.round(process.memoryUsage().heapUsed / 10485.76) / 100 + "MB");
+```txt
+[code memory nodejs]demo/index.tsx:3:3: +0.01MB 2MB
+[code memory nodejs]demo/index.tsx:2:3: +0.01MB 2.32MB
+[code memory nodejs]demo/index.tsx:1:1: +0.33MB 2.32MB
 ```
 
 logger can be disabled by `code-memory-nodejs:disable` in comment.
@@ -129,20 +73,12 @@ children logger can be disabled by `code-memory-nodejs:disable-children` in comm
 
 ### codeMemoryBrowserTransformer
 
-For example, the generated js code is:
+For example:
 
-```js
-"use strict";
-for (let i = 0; i < 4; i++) {
-    let j = i;
-    console.debug("[code memory browser]demo/index.tsx:2:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
-    while (j < 4) {
-        j++;
-        console.debug("[code memory browser]demo/index.tsx:4:5: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
-    }
-    console.debug("[code memory browser]demo/index.tsx:3:3: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
-}
-console.debug("[code memory browser]demo/index.tsx:1:1: " + Math.round(performance.memory.usedJSHeapSize / 10485.76) / 100 + "MB");
+```txt
+[code memory browser]demo/index.tsx:3:3: +0.01MB 2MB
+[code memory browser]demo/index.tsx:2:3: +0.01MB 2.32MB
+[code memory browser]demo/index.tsx:1:1: +0.33MB 2.32MB
 ```
 
 logger can be disabled by `code-memory-browser:disable` in comment.

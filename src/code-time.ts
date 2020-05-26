@@ -56,7 +56,7 @@ function transformStatements(
       continue
     }
     const position = getPosition(sourceFile, statement.getStart(sourceFile), functionName)
-    const variableName = '_' + index++
+    const variableName = '_code_time_' + index++
     statements.push(
       ts.createVariableStatement(
         undefined,

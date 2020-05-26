@@ -23,6 +23,8 @@ export const codeMemoryBrowserTransformer: ts.TransformerFactory<ts.SourceFile> 
   return ts.visitNode(sourceFile, visitor)
 }
 
+let index = 0
+
 function transformStatements(
   sourceFile: ts.SourceFile,
   node: { statements: ts.NodeArray<ts.Statement> },
@@ -54,18 +56,53 @@ function transformStatements(
       continue
     }
     const position = getPosition(sourceFile, statement.getStart(sourceFile), functionName)
+    const variableName = '_code_memory_browser_' + index
+    const variableNameAfter = '_code_memory_browser_after_' + index
+    index++
     statements.push(
-      statement,
-      ts.createExpressionStatement(ts.createCall(
-        ts.createPropertyAccess(
-          ts.createIdentifier("console"),
-          ts.createIdentifier("debug")
-        ),
+      ts.createVariableStatement(
         undefined,
-        [ts.createBinary(
-          ts.createBinary(
-            ts.createStringLiteral(`[code memory browser]${position}: `),
-            ts.createToken(ts.SyntaxKind.PlusToken),
+        ts.createVariableDeclarationList(
+          [ts.createVariableDeclaration(
+            ts.createIdentifier(variableName),
+            undefined,
+            ts.createBinary(
+              ts.createCall(
+                ts.createPropertyAccess(
+                  ts.createIdentifier("Math"),
+                  ts.createIdentifier("round")
+                ),
+                undefined,
+                [ts.createBinary(
+                  ts.createPropertyAccess(
+                    ts.createCall(
+                      ts.createPropertyAccess(
+                        ts.createIdentifier("process"),
+                        ts.createIdentifier("memoryUsage")
+                      ),
+                      undefined,
+                      []
+                    ),
+                    ts.createIdentifier("heapUsed")
+                  ),
+                  ts.createToken(ts.SyntaxKind.SlashToken),
+                  ts.createNumericLiteral(memoryUnit)
+                )]
+              ),
+              ts.createToken(ts.SyntaxKind.SlashToken),
+              ts.createNumericLiteral("100")
+            )
+          )],
+          ts.NodeFlags.None
+        )
+      ),
+      statement,
+      ts.createVariableStatement(
+        undefined,
+        ts.createVariableDeclarationList(
+          [ts.createVariableDeclaration(
+            ts.createIdentifier(variableNameAfter),
+            undefined,
             ts.createBinary(
               ts.createCall(
                 ts.createPropertyAccess(
@@ -88,11 +125,64 @@ function transformStatements(
               ts.createToken(ts.SyntaxKind.SlashToken),
               ts.createNumericLiteral("100")
             )
-          ),
-          ts.createToken(ts.SyntaxKind.PlusToken),
-          ts.createStringLiteral("MB")
-        )]
-      )),
+          )],
+          ts.NodeFlags.None
+        )
+      ),
+      ts.createIf(
+        ts.createBinary(
+          ts.createIdentifier(variableName),
+          ts.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
+          ts.createIdentifier(variableNameAfter)
+        ),
+        ts.createBlock(
+          [ts.createExpressionStatement(ts.createCall(
+            ts.createPropertyAccess(
+              ts.createIdentifier("console"),
+              ts.createIdentifier("debug")
+            ),
+            undefined,
+            [ts.createBinary(
+              ts.createBinary(
+                ts.createBinary(
+                  ts.createBinary(
+                    ts.createStringLiteral(`[code memory browser]${position}: +`),
+                    ts.createToken(ts.SyntaxKind.PlusToken),
+                    ts.createBinary(
+                      ts.createCall(
+                        ts.createPropertyAccess(
+                          ts.createIdentifier("Math"),
+                          ts.createIdentifier("round")
+                        ),
+                        undefined,
+                        [ts.createBinary(
+                          ts.createParen(ts.createBinary(
+                            ts.createIdentifier(variableNameAfter),
+                            ts.createToken(ts.SyntaxKind.MinusToken),
+                            ts.createIdentifier(variableName)
+                          )),
+                          ts.createToken(ts.SyntaxKind.AsteriskToken),
+                          ts.createNumericLiteral("100")
+                        )]
+                      ),
+                      ts.createToken(ts.SyntaxKind.SlashToken),
+                      ts.createNumericLiteral("100")
+                    ),
+                  ),
+                  ts.createToken(ts.SyntaxKind.PlusToken),
+                  ts.createStringLiteral("MB ")
+                ),
+                ts.createToken(ts.SyntaxKind.PlusToken),
+                ts.createParen(ts.createIdentifier(variableNameAfter))
+              ),
+              ts.createToken(ts.SyntaxKind.PlusToken),
+              ts.createStringLiteral("MB")
+            )]
+          ))],
+          true
+        ),
+        undefined
+      ),
     )
   }
   node.statements = ts.createNodeArray(statements)
