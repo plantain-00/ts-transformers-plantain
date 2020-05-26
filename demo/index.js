@@ -34,13 +34,14 @@ _global._executedCode.set("demo/index.tsx", _executedCodeLines);
 _global._allCode.set("demo/index.tsx", [2, 4, 15, 26, 30, 37, 53, 55, 5, 10, 11, 16, 19, 27, 31, 34, 32, 39, 42, 45, 48]);
 console.debug("[executed code]demo/index.tsx:2:1");
 var _code_time_0 = Date.now();
-var _code_memory_nodejs_0 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+var _code_memory_nodejs_0 = process.memoryUsage().heapUsed;
 _executedCodeLines.add(2);
 // last-executing-code:disable
 let _lastExecutingCode;
-var _code_memory_nodejs_after_0 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-if (_code_memory_nodejs_0 !== _code_memory_nodejs_after_0) {
-    console.debug("[code memory nodejs]demo/index.tsx:2:1: +" + Math.round((_code_memory_nodejs_after_0 - _code_memory_nodejs_0) * 100) / 100 + "MB " + (_code_memory_nodejs_after_0) + "MB");
+var _code_memory_nodejs_after_0 = process.memoryUsage().heapUsed;
+var _code_memory_nodejs_changes_0 = _code_memory_nodejs_after_0 - _code_memory_nodejs_0;
+if (_code_memory_nodejs_changes_0 > 10485.76) {
+    console.debug("[code memory nodejs]demo/index.tsx:2:1: +" + Math.round(_code_memory_nodejs_changes_0 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_0 / 10485.76) / 100) + "MB");
 }
 if (Date.now() !== _code_time_0) {
     console.debug("[code time]demo/index.tsx:2:1: " + (Date.now() - _code_time_0) + "ms");
@@ -48,24 +49,25 @@ if (Date.now() !== _code_time_0) {
 console.debug("[executed code]demo/index.tsx:4:1");
 var _code_time_1 = Date.now();
 _lastExecutingCode = "demo/index.tsx:4:1";
-var _code_memory_nodejs_1 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+var _code_memory_nodejs_1 = process.memoryUsage().heapUsed;
 _executedCodeLines.add(4);
 for (let i = 0; i < 4; i++) {
     console.debug("[executed code]demo/index.tsx:5:3");
     var _code_time_5 = Date.now();
     _lastExecutingCode = "demo/index.tsx:5:3";
-    var _code_memory_nodejs_5 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_5 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(5);
     let j = i;
-    var _code_memory_nodejs_after_5 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_5 !== _code_memory_nodejs_after_5) {
-        console.debug("[code memory nodejs]demo/index.tsx:5:3: +" + Math.round((_code_memory_nodejs_after_5 - _code_memory_nodejs_5) * 100) / 100 + "MB " + (_code_memory_nodejs_after_5) + "MB");
+    var _code_memory_nodejs_after_5 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_5 = _code_memory_nodejs_after_5 - _code_memory_nodejs_5;
+    if (_code_memory_nodejs_changes_5 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:5:3: +" + Math.round(_code_memory_nodejs_changes_5 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_5 / 10485.76) / 100) + "MB");
     }
     if (Date.now() !== _code_time_5) {
         console.debug("[code time]demo/index.tsx:5:3: " + (Date.now() - _code_time_5) + "ms");
     }
     _lastExecutingCode = "demo/index.tsx:10:3";
-    var _code_memory_nodejs_6 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_6 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(10);
     /**
      * executed-code:disable
@@ -73,22 +75,25 @@ for (let i = 0; i < 4; i++) {
      */
     while (j < 4) {
         _lastExecutingCode = "demo/index.tsx:11:5";
-        var _code_memory_nodejs_7 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+        var _code_memory_nodejs_7 = process.memoryUsage().heapUsed;
         _executedCodeLines.add(11);
         j++;
-        var _code_memory_nodejs_after_7 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-        if (_code_memory_nodejs_7 !== _code_memory_nodejs_after_7) {
-            console.debug("[code memory nodejs]demo/index.tsx:11:5: +" + Math.round((_code_memory_nodejs_after_7 - _code_memory_nodejs_7) * 100) / 100 + "MB " + (_code_memory_nodejs_after_7) + "MB");
+        var _code_memory_nodejs_after_7 = process.memoryUsage().heapUsed;
+        var _code_memory_nodejs_changes_7 = _code_memory_nodejs_after_7 - _code_memory_nodejs_7;
+        if (_code_memory_nodejs_changes_7 > 10485.76) {
+            console.debug("[code memory nodejs]demo/index.tsx:11:5: +" + Math.round(_code_memory_nodejs_changes_7 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_7 / 10485.76) / 100) + "MB");
         }
     }
-    var _code_memory_nodejs_after_6 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_6 !== _code_memory_nodejs_after_6) {
-        console.debug("[code memory nodejs]demo/index.tsx:10:3: +" + Math.round((_code_memory_nodejs_after_6 - _code_memory_nodejs_6) * 100) / 100 + "MB " + (_code_memory_nodejs_after_6) + "MB");
+    var _code_memory_nodejs_after_6 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_6 = _code_memory_nodejs_after_6 - _code_memory_nodejs_6;
+    if (_code_memory_nodejs_changes_6 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:10:3: +" + Math.round(_code_memory_nodejs_changes_6 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_6 / 10485.76) / 100) + "MB");
     }
 }
-var _code_memory_nodejs_after_1 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-if (_code_memory_nodejs_1 !== _code_memory_nodejs_after_1) {
-    console.debug("[code memory nodejs]demo/index.tsx:4:1: +" + Math.round((_code_memory_nodejs_after_1 - _code_memory_nodejs_1) * 100) / 100 + "MB " + (_code_memory_nodejs_after_1) + "MB");
+var _code_memory_nodejs_after_1 = process.memoryUsage().heapUsed;
+var _code_memory_nodejs_changes_1 = _code_memory_nodejs_after_1 - _code_memory_nodejs_1;
+if (_code_memory_nodejs_changes_1 > 10485.76) {
+    console.debug("[code memory nodejs]demo/index.tsx:4:1: +" + Math.round(_code_memory_nodejs_changes_1 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_1 / 10485.76) / 100) + "MB");
 }
 if (Date.now() !== _code_time_1) {
     console.debug("[code time]demo/index.tsx:4:1: " + (Date.now() - _code_time_1) + "ms");
@@ -96,18 +101,19 @@ if (Date.now() !== _code_time_1) {
 console.debug("[executed code]demo/index.tsx:15:1");
 var _code_time_2 = Date.now();
 _lastExecutingCode = "demo/index.tsx:15:1";
-var _code_memory_nodejs_2 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+var _code_memory_nodejs_2 = process.memoryUsage().heapUsed;
 _executedCodeLines.add(15);
 try {
     console.debug("[executed code]demo/index.tsx:16:3");
     var _code_time_6 = Date.now();
     _lastExecutingCode = "demo/index.tsx:16:3";
-    var _code_memory_nodejs_8 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_8 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(16);
     throw 1;
-    var _code_memory_nodejs_after_8 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_8 !== _code_memory_nodejs_after_8) {
-        console.debug("[code memory nodejs]demo/index.tsx:16:3: +" + Math.round((_code_memory_nodejs_after_8 - _code_memory_nodejs_8) * 100) / 100 + "MB " + (_code_memory_nodejs_after_8) + "MB");
+    var _code_memory_nodejs_after_8 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_8 = _code_memory_nodejs_after_8 - _code_memory_nodejs_8;
+    if (_code_memory_nodejs_changes_8 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:16:3: +" + Math.round(_code_memory_nodejs_changes_8 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_8 / 10485.76) / 100) + "MB");
     }
     if (Date.now() !== _code_time_6) {
         console.debug("[code time]demo/index.tsx:16:3: " + (Date.now() - _code_time_6) + "ms");
@@ -116,21 +122,23 @@ try {
 catch {
     console.debug("[executed code]demo/index.tsx:19:3");
     var _code_time_7 = Date.now();
-    var _code_memory_nodejs_9 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_9 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(19);
     // last-executing-code:disable
     console.info(_lastExecutingCode);
-    var _code_memory_nodejs_after_9 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_9 !== _code_memory_nodejs_after_9) {
-        console.debug("[code memory nodejs]demo/index.tsx:19:3: +" + Math.round((_code_memory_nodejs_after_9 - _code_memory_nodejs_9) * 100) / 100 + "MB " + (_code_memory_nodejs_after_9) + "MB");
+    var _code_memory_nodejs_after_9 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_9 = _code_memory_nodejs_after_9 - _code_memory_nodejs_9;
+    if (_code_memory_nodejs_changes_9 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:19:3: +" + Math.round(_code_memory_nodejs_changes_9 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_9 / 10485.76) / 100) + "MB");
     }
     if (Date.now() !== _code_time_7) {
         console.debug("[code time]demo/index.tsx:19:3: " + (Date.now() - _code_time_7) + "ms");
     }
 }
-var _code_memory_nodejs_after_2 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-if (_code_memory_nodejs_2 !== _code_memory_nodejs_after_2) {
-    console.debug("[code memory nodejs]demo/index.tsx:15:1: +" + Math.round((_code_memory_nodejs_after_2 - _code_memory_nodejs_2) * 100) / 100 + "MB " + (_code_memory_nodejs_after_2) + "MB");
+var _code_memory_nodejs_after_2 = process.memoryUsage().heapUsed;
+var _code_memory_nodejs_changes_2 = _code_memory_nodejs_after_2 - _code_memory_nodejs_2;
+if (_code_memory_nodejs_changes_2 > 10485.76) {
+    console.debug("[code memory nodejs]demo/index.tsx:15:1: +" + Math.round(_code_memory_nodejs_changes_2 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_2 / 10485.76) / 100) + "MB");
 }
 if (Date.now() !== _code_time_2) {
     console.debug("[code time]demo/index.tsx:15:1: " + (Date.now() - _code_time_2) + "ms");
@@ -143,12 +151,13 @@ _executedCodeLines.add(26);
  */
 function foo() {
     _lastExecutingCode = "demo/index.tsx:27:3 foo";
-    var _code_memory_nodejs_10 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_10 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(27);
     console.info(1);
-    var _code_memory_nodejs_after_10 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_10 !== _code_memory_nodejs_after_10) {
-        console.debug("[code memory nodejs]demo/index.tsx:27:3 foo: +" + Math.round((_code_memory_nodejs_after_10 - _code_memory_nodejs_10) * 100) / 100 + "MB " + (_code_memory_nodejs_after_10) + "MB");
+    var _code_memory_nodejs_after_10 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_10 = _code_memory_nodejs_after_10 - _code_memory_nodejs_10;
+    if (_code_memory_nodejs_changes_10 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:27:3 foo: +" + Math.round(_code_memory_nodejs_changes_10 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_10 / 10485.76) / 100) + "MB");
     }
 }
 console.debug("[executed code]demo/index.tsx:30:1");
@@ -162,12 +171,13 @@ function bar() {
         console.debug("[executed code]demo/index.tsx:32:5 baz");
         var _code_time_9 = Date.now();
         _lastExecutingCode = "demo/index.tsx:32:5 baz";
-        var _code_memory_nodejs_12 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+        var _code_memory_nodejs_12 = process.memoryUsage().heapUsed;
         _executedCodeLines.add(32);
         console.info(2);
-        var _code_memory_nodejs_after_12 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-        if (_code_memory_nodejs_12 !== _code_memory_nodejs_after_12) {
-            console.debug("[code memory nodejs]demo/index.tsx:32:5 baz: +" + Math.round((_code_memory_nodejs_after_12 - _code_memory_nodejs_12) * 100) / 100 + "MB " + (_code_memory_nodejs_after_12) + "MB");
+        var _code_memory_nodejs_after_12 = process.memoryUsage().heapUsed;
+        var _code_memory_nodejs_changes_12 = _code_memory_nodejs_after_12 - _code_memory_nodejs_12;
+        if (_code_memory_nodejs_changes_12 > 10485.76) {
+            console.debug("[code memory nodejs]demo/index.tsx:32:5 baz: +" + Math.round(_code_memory_nodejs_changes_12 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_12 / 10485.76) / 100) + "MB");
         }
         if (Date.now() !== _code_time_9) {
             console.debug("[code time]demo/index.tsx:32:5 baz: " + (Date.now() - _code_time_9) + "ms");
@@ -176,12 +186,13 @@ function bar() {
     console.debug("[executed code]demo/index.tsx:34:3 bar");
     var _code_time_8 = Date.now();
     _lastExecutingCode = "demo/index.tsx:34:3 bar";
-    var _code_memory_nodejs_11 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+    var _code_memory_nodejs_11 = process.memoryUsage().heapUsed;
     _executedCodeLines.add(34);
     console.info(baz);
-    var _code_memory_nodejs_after_11 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-    if (_code_memory_nodejs_11 !== _code_memory_nodejs_after_11) {
-        console.debug("[code memory nodejs]demo/index.tsx:34:3 bar: +" + Math.round((_code_memory_nodejs_after_11 - _code_memory_nodejs_11) * 100) / 100 + "MB " + (_code_memory_nodejs_after_11) + "MB");
+    var _code_memory_nodejs_after_11 = process.memoryUsage().heapUsed;
+    var _code_memory_nodejs_changes_11 = _code_memory_nodejs_after_11 - _code_memory_nodejs_11;
+    if (_code_memory_nodejs_changes_11 > 10485.76) {
+        console.debug("[code memory nodejs]demo/index.tsx:34:3 bar: +" + Math.round(_code_memory_nodejs_changes_11 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_11 / 10485.76) / 100) + "MB");
     }
     if (Date.now() !== _code_time_8) {
         console.debug("[code time]demo/index.tsx:34:3 bar: " + (Date.now() - _code_time_8) + "ms");
@@ -195,12 +206,13 @@ class A {
         console.debug("[executed code]demo/index.tsx:39:5 A.b");
         var _code_time_10 = Date.now();
         _lastExecutingCode = "demo/index.tsx:39:5 A.b";
-        var _code_memory_nodejs_13 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+        var _code_memory_nodejs_13 = process.memoryUsage().heapUsed;
         _executedCodeLines.add(39);
         console.info(1);
-        var _code_memory_nodejs_after_13 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-        if (_code_memory_nodejs_13 !== _code_memory_nodejs_after_13) {
-            console.debug("[code memory nodejs]demo/index.tsx:39:5 A.b: +" + Math.round((_code_memory_nodejs_after_13 - _code_memory_nodejs_13) * 100) / 100 + "MB " + (_code_memory_nodejs_after_13) + "MB");
+        var _code_memory_nodejs_after_13 = process.memoryUsage().heapUsed;
+        var _code_memory_nodejs_changes_13 = _code_memory_nodejs_after_13 - _code_memory_nodejs_13;
+        if (_code_memory_nodejs_changes_13 > 10485.76) {
+            console.debug("[code memory nodejs]demo/index.tsx:39:5 A.b: +" + Math.round(_code_memory_nodejs_changes_13 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_13 / 10485.76) / 100) + "MB");
         }
         if (Date.now() !== _code_time_10) {
             console.debug("[code time]demo/index.tsx:39:5 A.b: " + (Date.now() - _code_time_10) + "ms");
@@ -210,12 +222,13 @@ class A {
         console.debug("[executed code]demo/index.tsx:42:5 A.constructor");
         var _code_time_11 = Date.now();
         _lastExecutingCode = "demo/index.tsx:42:5 A.constructor";
-        var _code_memory_nodejs_14 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+        var _code_memory_nodejs_14 = process.memoryUsage().heapUsed;
         _executedCodeLines.add(42);
         console.info(2);
-        var _code_memory_nodejs_after_14 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-        if (_code_memory_nodejs_14 !== _code_memory_nodejs_after_14) {
-            console.debug("[code memory nodejs]demo/index.tsx:42:5 A.constructor: +" + Math.round((_code_memory_nodejs_after_14 - _code_memory_nodejs_14) * 100) / 100 + "MB " + (_code_memory_nodejs_after_14) + "MB");
+        var _code_memory_nodejs_after_14 = process.memoryUsage().heapUsed;
+        var _code_memory_nodejs_changes_14 = _code_memory_nodejs_after_14 - _code_memory_nodejs_14;
+        if (_code_memory_nodejs_changes_14 > 10485.76) {
+            console.debug("[code memory nodejs]demo/index.tsx:42:5 A.constructor: +" + Math.round(_code_memory_nodejs_changes_14 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_14 / 10485.76) / 100) + "MB");
         }
         if (Date.now() !== _code_time_11) {
             console.debug("[code time]demo/index.tsx:42:5 A.constructor: " + (Date.now() - _code_time_11) + "ms");
@@ -231,12 +244,13 @@ class A {
         console.debug("[executed code]demo/index.tsx:48:5 A.c");
         var _code_time_12 = Date.now();
         _lastExecutingCode = "demo/index.tsx:48:5 A.c";
-        var _code_memory_nodejs_15 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+        var _code_memory_nodejs_15 = process.memoryUsage().heapUsed;
         _executedCodeLines.add(48);
         console.info(value);
-        var _code_memory_nodejs_after_15 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-        if (_code_memory_nodejs_15 !== _code_memory_nodejs_after_15) {
-            console.debug("[code memory nodejs]demo/index.tsx:48:5 A.c: +" + Math.round((_code_memory_nodejs_after_15 - _code_memory_nodejs_15) * 100) / 100 + "MB " + (_code_memory_nodejs_after_15) + "MB");
+        var _code_memory_nodejs_after_15 = process.memoryUsage().heapUsed;
+        var _code_memory_nodejs_changes_15 = _code_memory_nodejs_after_15 - _code_memory_nodejs_15;
+        if (_code_memory_nodejs_changes_15 > 10485.76) {
+            console.debug("[code memory nodejs]demo/index.tsx:48:5 A.c: +" + Math.round(_code_memory_nodejs_changes_15 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_15 / 10485.76) / 100) + "MB");
         }
         if (Date.now() !== _code_time_12) {
             console.debug("[code time]demo/index.tsx:48:5 A.c: " + (Date.now() - _code_time_12) + "ms");
@@ -246,12 +260,13 @@ class A {
 console.debug("[executed code]demo/index.tsx:53:1");
 var _code_time_3 = Date.now();
 _lastExecutingCode = "demo/index.tsx:53:1";
-var _code_memory_nodejs_3 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+var _code_memory_nodejs_3 = process.memoryUsage().heapUsed;
 _executedCodeLines.add(53);
 _showCodeCoverage();
-var _code_memory_nodejs_after_3 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-if (_code_memory_nodejs_3 !== _code_memory_nodejs_after_3) {
-    console.debug("[code memory nodejs]demo/index.tsx:53:1: +" + Math.round((_code_memory_nodejs_after_3 - _code_memory_nodejs_3) * 100) / 100 + "MB " + (_code_memory_nodejs_after_3) + "MB");
+var _code_memory_nodejs_after_3 = process.memoryUsage().heapUsed;
+var _code_memory_nodejs_changes_3 = _code_memory_nodejs_after_3 - _code_memory_nodejs_3;
+if (_code_memory_nodejs_changes_3 > 10485.76) {
+    console.debug("[code memory nodejs]demo/index.tsx:53:1: +" + Math.round(_code_memory_nodejs_changes_3 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_3 / 10485.76) / 100) + "MB");
 }
 if (Date.now() !== _code_time_3) {
     console.debug("[code time]demo/index.tsx:53:1: " + (Date.now() - _code_time_3) + "ms");
@@ -259,15 +274,16 @@ if (Date.now() !== _code_time_3) {
 console.debug("[executed code]demo/index.tsx:55:1");
 var _code_time_4 = Date.now();
 _lastExecutingCode = "demo/index.tsx:55:1";
-var _code_memory_nodejs_4 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
+var _code_memory_nodejs_4 = process.memoryUsage().heapUsed;
 _executedCodeLines.add(55);
 React.createElement("button", { onClick: () => {
         console.debug("[executed code]demo/index.tsx:55:24");
         return console.info(1);
     } });
-var _code_memory_nodejs_after_4 = Math.round(process.memoryUsage().heapUsed / 10485.76) / 100;
-if (_code_memory_nodejs_4 !== _code_memory_nodejs_after_4) {
-    console.debug("[code memory nodejs]demo/index.tsx:55:1: +" + Math.round((_code_memory_nodejs_after_4 - _code_memory_nodejs_4) * 100) / 100 + "MB " + (_code_memory_nodejs_after_4) + "MB");
+var _code_memory_nodejs_after_4 = process.memoryUsage().heapUsed;
+var _code_memory_nodejs_changes_4 = _code_memory_nodejs_after_4 - _code_memory_nodejs_4;
+if (_code_memory_nodejs_changes_4 > 10485.76) {
+    console.debug("[code memory nodejs]demo/index.tsx:55:1: +" + Math.round(_code_memory_nodejs_changes_4 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_nodejs_after_4 / 10485.76) / 100) + "MB");
 }
 if (Date.now() !== _code_time_4) {
     console.debug("[code time]demo/index.tsx:55:1: " + (Date.now() - _code_time_4) + "ms");

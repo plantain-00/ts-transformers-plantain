@@ -58,6 +58,7 @@ function transformStatements(
     const position = getPosition(sourceFile, statement.getStart(sourceFile), functionName)
     const variableName = '_code_memory_browser_' + index
     const variableNameAfter = '_code_memory_browser_after_' + index
+    const variableNameChanges = '_code_memory_browser_changes_' + index
     index++
     statements.push(
       ts.createVariableStatement(
@@ -66,31 +67,12 @@ function transformStatements(
           [ts.createVariableDeclaration(
             ts.createIdentifier(variableName),
             undefined,
-            ts.createBinary(
-              ts.createCall(
-                ts.createPropertyAccess(
-                  ts.createIdentifier("Math"),
-                  ts.createIdentifier("round")
-                ),
-                undefined,
-                [ts.createBinary(
-                  ts.createPropertyAccess(
-                    ts.createCall(
-                      ts.createPropertyAccess(
-                        ts.createIdentifier("process"),
-                        ts.createIdentifier("memoryUsage")
-                      ),
-                      undefined,
-                      []
-                    ),
-                    ts.createIdentifier("heapUsed")
-                  ),
-                  ts.createToken(ts.SyntaxKind.SlashToken),
-                  ts.createNumericLiteral(memoryUnit)
-                )]
+            ts.createPropertyAccess(
+              ts.createPropertyAccess(
+                ts.createIdentifier("performance"),
+                ts.createIdentifier("memory")
               ),
-              ts.createToken(ts.SyntaxKind.SlashToken),
-              ts.createNumericLiteral("100")
+              ts.createIdentifier("usedJSHeapSize")
             )
           )],
           ts.NodeFlags.None
@@ -103,27 +85,27 @@ function transformStatements(
           [ts.createVariableDeclaration(
             ts.createIdentifier(variableNameAfter),
             undefined,
-            ts.createBinary(
-              ts.createCall(
-                ts.createPropertyAccess(
-                  ts.createIdentifier("Math"),
-                  ts.createIdentifier("round")
-                ),
-                undefined,
-                [ts.createBinary(
-                  ts.createPropertyAccess(
-                    ts.createPropertyAccess(
-                      ts.createIdentifier("performance"),
-                      ts.createIdentifier("memory")
-                    ),
-                    ts.createIdentifier("usedJSHeapSize")
-                  ),
-                  ts.createToken(ts.SyntaxKind.SlashToken),
-                  ts.createNumericLiteral(memoryUnit)
-                )]
+            ts.createPropertyAccess(
+              ts.createPropertyAccess(
+                ts.createIdentifier("performance"),
+                ts.createIdentifier("memory")
               ),
-              ts.createToken(ts.SyntaxKind.SlashToken),
-              ts.createNumericLiteral("100")
+              ts.createIdentifier("usedJSHeapSize")
+            )
+          )],
+          ts.NodeFlags.None
+        )
+      ),
+      ts.createVariableStatement(
+        undefined,
+        ts.createVariableDeclarationList(
+          [ts.createVariableDeclaration(
+            ts.createIdentifier(variableNameChanges),
+            undefined,
+            ts.createBinary(
+              ts.createIdentifier(variableNameAfter),
+              ts.createToken(ts.SyntaxKind.MinusToken),
+              ts.createIdentifier(variableName)
             )
           )],
           ts.NodeFlags.None
@@ -131,9 +113,9 @@ function transformStatements(
       ),
       ts.createIf(
         ts.createBinary(
-          ts.createIdentifier(variableName),
-          ts.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
-          ts.createIdentifier(variableNameAfter)
+          ts.createIdentifier(variableNameChanges),
+          ts.createToken(ts.SyntaxKind.GreaterThanToken),
+          ts.createNumericLiteral(memoryUnit)
         ),
         ts.createBlock(
           [ts.createExpressionStatement(ts.createCall(
@@ -156,24 +138,35 @@ function transformStatements(
                         ),
                         undefined,
                         [ts.createBinary(
-                          ts.createParen(ts.createBinary(
-                            ts.createIdentifier(variableNameAfter),
-                            ts.createToken(ts.SyntaxKind.MinusToken),
-                            ts.createIdentifier(variableName)
-                          )),
-                          ts.createToken(ts.SyntaxKind.AsteriskToken),
-                          ts.createNumericLiteral("100")
+                          ts.createIdentifier(variableNameChanges),
+                          ts.createToken(ts.SyntaxKind.SlashToken),
+                          ts.createNumericLiteral(memoryUnit)
                         )]
                       ),
                       ts.createToken(ts.SyntaxKind.SlashToken),
                       ts.createNumericLiteral("100")
-                    ),
+                    )
                   ),
                   ts.createToken(ts.SyntaxKind.PlusToken),
-                  ts.createStringLiteral("MB ")
+                  ts.createStringLiteral("MB -> ")
                 ),
                 ts.createToken(ts.SyntaxKind.PlusToken),
-                ts.createParen(ts.createIdentifier(variableNameAfter))
+                ts.createParen(ts.createBinary(
+                  ts.createCall(
+                    ts.createPropertyAccess(
+                      ts.createIdentifier("Math"),
+                      ts.createIdentifier("round")
+                    ),
+                    undefined,
+                    [ts.createBinary(
+                      ts.createIdentifier(variableNameAfter),
+                      ts.createToken(ts.SyntaxKind.SlashToken),
+                      ts.createNumericLiteral(memoryUnit)
+                    )]
+                  ),
+                  ts.createToken(ts.SyntaxKind.SlashToken),
+                  ts.createNumericLiteral("100")
+                ))
               ),
               ts.createToken(ts.SyntaxKind.PlusToken),
               ts.createStringLiteral("MB")

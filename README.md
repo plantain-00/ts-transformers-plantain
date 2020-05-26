@@ -63,9 +63,15 @@ children logger can be disabled by `last-executing-code:disable-children` in com
 For example:
 
 ```txt
-[code memory nodejs]demo/index.tsx:3:3: +0.01MB 2MB
-[code memory nodejs]demo/index.tsx:2:3: +0.01MB 2.32MB
-[code memory nodejs]demo/index.tsx:1:1: +0.33MB 2.32MB
+[code memory nodejs]demo/index.tsx:10:3: +0.02MB -> 2.02MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.35MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.62MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.63MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.64MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.65MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.67MB
+[code memory nodejs]demo/index.tsx:10:3: +0.01MB -> 2.68MB
+[code memory nodejs]demo/index.tsx:4:1: +0.71MB -> 2.71MB
 ```
 
 logger can be disabled by `code-memory-nodejs:disable` in comment.
@@ -76,9 +82,15 @@ children logger can be disabled by `code-memory-nodejs:disable-children` in comm
 For example:
 
 ```txt
-[code memory browser]demo/index.tsx:3:3: +0.01MB 2MB
-[code memory browser]demo/index.tsx:2:3: +0.01MB 2.32MB
-[code memory browser]demo/index.tsx:1:1: +0.33MB 2.32MB
+[code memory browser]demo/index.tsx:10:3: +0.02MB -> 2.02MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.35MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.62MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.63MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.64MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.65MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.67MB
+[code memory browser]demo/index.tsx:10:3: +0.01MB -> 2.68MB
+[code memory browser]demo/index.tsx:4:1: +0.71MB -> 2.71MB
 ```
 
 logger can be disabled by `code-memory-browser:disable` in comment.
