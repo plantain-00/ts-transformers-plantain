@@ -1,5 +1,4 @@
 const tsFiles = `"src/**/*.ts"`
-const jsFiles = `"*.config.js"`
 
 export default {
   build: [
@@ -9,12 +8,11 @@ export default {
     'webpack --config demo/webpack.config.ts'
   ],
   lint: {
-    ts: `eslint --ext .js,.ts ${tsFiles} ${jsFiles}`,
+    ts: `eslint --ext .js,.ts ${tsFiles}`,
     export: `no-unused-export ${tsFiles} --strict --need-module tslib`,
-    commit: `commitlint --from=HEAD~1`,
     markdown: `markdownlint README.md`,
     typeCoverage: 'type-coverage -p src --strict'
   },
   test: [],
-  fix: `eslint --ext .js,.ts ${tsFiles} ${jsFiles} --fix`
+  fix: `eslint --ext .js,.ts ${tsFiles} --fix`
 }
