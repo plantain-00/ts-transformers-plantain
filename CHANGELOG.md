@@ -1,5 +1,16 @@
 # Change Log
 
+## [1.8.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.7.0...v1.8.0) (2020-07-26)
+  
+* fix: release script ([f063afe](https://github.com/plantain-00/ts-transformers-plantain/commit/f063afee1181fd32bb45391d51c050814fc2522f))
+* feat: support safeOptimizationTransformer ([a28d37f](https://github.com/plantain-00/ts-transformers-plantain/commit/a28d37f51e9d03cfc5b8be98286e2dd75723b2b5))
+* chore: update dependencies ([54959d6](https://github.com/plantain-00/ts-transformers-plantain/commit/54959d6150ff8275a610c7ffc3f25fd7efc14ec8)) ([b1d9bee](https://github.com/plantain-00/ts-transformers-plantain/commit/b1d9bee38dd92313567a4dcdb2add2be5c1adf02)) ([38aada5](https://github.com/plantain-00/ts-transformers-plantain/commit/38aada53afa5a4b56c7d9da3b4185374103ab2ca)) ([3be68f0](https://github.com/plantain-00/ts-transformers-plantain/commit/3be68f09b313e80e4372a19b35bbccd8a17f3949)) ([115929a](https://github.com/plantain-00/ts-transformers-plantain/commit/115929a60bb2479afd3b3f003e61b97bc190e13d)) ([c80f522](https://github.com/plantain-00/ts-transformers-plantain/commit/c80f5222d6881137817899aff96a79ffaa1f1a79)) ([c9e8eeb](https://github.com/plantain-00/ts-transformers-plantain/commit/c9e8eeba2a4251d35399605f32bb8ff2ac91ee7b)) ([300d22e](https://github.com/plantain-00/ts-transformers-plantain/commit/300d22ecb564ac29eb183f9dd2843a9a23589612))
+* chore: add changelog ([90ca2f8](https://github.com/plantain-00/ts-transformers-plantain/commit/90ca2f8909dcb9da296fbde64dcc4d9f085ff52a))
+* docs: add github ci badge ([d79e37d](https://github.com/plantain-00/ts-transformers-plantain/commit/d79e37d9d33dac166c06a0ee7d0d5a7b9a6fdb3f))
+* chore: remove tsconfig.eslint.json ([0ab1da1](https://github.com/plantain-00/ts-transformers-plantain/commit/0ab1da1e1764f65258e9e2ea1c483480c539a80c))
+* chore: reuse tsconfig.json ([eb58619](https://github.com/plantain-00/ts-transformers-plantain/commit/eb586194d4616fac1e8b0be8d2847b92c91f06ae))
+* chore: remove commitlint ([a2c3cb2](https://github.com/plantain-00/ts-transformers-plantain/commit/a2c3cb285e8d68f6bf18fa553bbd3c8ab3dae553))
+
 ## [1.7.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.6.0...v1.7.0) (2020-05-27)
   
 * feat: add jsx element position ([13f684e](https://github.com/plantain-00/ts-transformers-plantain/commit/13f684e627b99bbde72499be608f00a7a65c1f31))
