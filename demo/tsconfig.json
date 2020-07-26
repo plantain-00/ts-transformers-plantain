@@ -33,6 +33,11 @@
         "import": "jsxElementPositionTransformer",
         "type": "raw"
       },
+      {
+        "transform": "../dist",
+        "import": "safeOptimizationTransformer",
+        "type": "raw"
+      },
     ]
   },
   "files": [

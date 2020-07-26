@@ -53,3 +53,6 @@ declare const _showCodeCoverage: () => void
 _showCodeCoverage();
 
 <button onClick={() => console.info(1)}></button>
+
+const a = 'aa'.length + 1
+console.info(a)

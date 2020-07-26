@@ -5,7 +5,8 @@ import {
   lastExecutingCodeTransformer,
   codeMemoryBrowserTransformer,
   executedCodeCoverageTransformer,
-  jsxElementPositionTransformer
+  jsxElementPositionTransformer,
+  safeOptimizationTransformer,
 } from '../src'
 
 export default {
@@ -35,6 +36,7 @@ export default {
               codeMemoryBrowserTransformer,
               executedCodeCoverageTransformer,
               jsxElementPositionTransformer,
+              safeOptimizationTransformer,
             ]
           })
         }

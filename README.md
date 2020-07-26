@@ -114,6 +114,14 @@ This transformer will add code position in `data-_position` for all jsx elements
 React.createElement("button", { onClick: () => console.info(1), "data-_position": 'demo/index.tsx:55:1' });
 ```
 
+## safeOptimizationTransformer
+
+This transformer will do some safe optiomizaiton, for example:
+
+```ts
+const a = 'aa'.length // -> const a = 2
+```
+
 ## usage
 
 ### with ttypescript
