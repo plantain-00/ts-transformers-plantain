@@ -1,5 +1,12 @@
 # Change Log
 
+## [1.9.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.8.0...v1.9.0) (2020-08-29)
+  
+* feat: support typescript 4 ([0412dde](https://github.com/plantain-00/ts-transformers-plantain/commit/0412ddef89e6d7af5af8659fe96bb83a5be657e1))
+* fix: add missing parserOptions ([59e3f75](https://github.com/plantain-00/ts-transformers-plantain/commit/59e3f75dedd30e1d20db4f18ce7dc13254c08730))
+* chore: update dependencies ([f75dab1](https://github.com/plantain-00/ts-transformers-plantain/commit/f75dab1f0cbabb001f8526c30839baa9cf9277e2)) ([b590a23](https://github.com/plantain-00/ts-transformers-plantain/commit/b590a2342b7d75f28515be8031039fb9290fa342)) ([06dacb3](https://github.com/plantain-00/ts-transformers-plantain/commit/06dacb3d76c72dc67149f2eb15a4c61c82cc455f))
+* build: improve release script ([ede0a3c](https://github.com/plantain-00/ts-transformers-plantain/commit/ede0a3c170b0a78c6135aa66fcad51ecb75eba72))
+
 ## [1.8.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.7.0...v1.8.0) (2020-07-26)
   
 * fix: release script ([f063afe](https://github.com/plantain-00/ts-transformers-plantain/commit/f063afee1181fd32bb45391d51c050814fc2522f))

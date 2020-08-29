@@ -1,6 +1,6 @@
 {
   "name": "ts-transformers-plantain",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Some custom typescript transformers.",
   "main": "index.js",
   "scripts": {
