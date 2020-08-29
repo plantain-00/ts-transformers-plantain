@@ -1,5 +1,5 @@
 import * as ts from 'typescript'
-import { getFunctionName, isDisabled, getPosition, isNotExecutableStatement } from './util'
+import { getFunctionName, isDisabled, getPosition, isNotExecutableStatement, mutable } from './util'
 
 /**
  * @public
@@ -16,16 +16,19 @@ export const executedCodeTransformer: ts.TransformerFactory<ts.SourceFile> = (co
     }
     if (ts.isBlock(node)) {
       transformStatements(sourceFile, node, undefined, functionName).map((s) => disabledStatements.add(s))
-    } else if (ts.isArrowFunction(node) && !ts.isBlock(node.body)) {
-      const start = node.body.getStart(sourceFile)
-      const returnStatement = ts.createReturn(node.body)
-      node.body = ts.createBlock(
-        [
-          returnStatement
-        ],
-        true
-      )
-      transformStatements(sourceFile, node.body, start, functionName).map((s) => disabledStatements.add(s))
+    } else if (ts.isArrowFunction(node)) {
+      const newNode = mutable(node)
+      if (!ts.isBlock(newNode.body)) {
+        const start = newNode.body.getStart(sourceFile)
+        const returnStatement = ts.createReturn(newNode.body)
+        newNode.body = ts.createBlock(
+          [
+            returnStatement
+          ],
+          true
+        )
+        transformStatements(sourceFile, newNode.body, start, functionName).map((s) => disabledStatements.add(s))
+      }
     }
     return ts.visitEachChild(node, (node) => visitor(node, functionName), context)
   }

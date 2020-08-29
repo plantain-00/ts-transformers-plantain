@@ -1,5 +1,5 @@
 import * as ts from 'typescript'
-import { getPosition } from './util'
+import { getPosition, mutable } from './util'
 
 /**
  * @public
@@ -9,7 +9,7 @@ export const jsxElementPositionTransformer: ts.TransformerFactory<ts.SourceFile>
     if (ts.isJsxOpeningElement(node)) {
       const start = node.getStart(sourceFile)
       const position = getPosition(sourceFile, start)
-      node.attributes.properties = ts.createNodeArray([
+      mutable(node.attributes).properties = ts.createNodeArray([
         ...node.attributes.properties,
         ts.createJsxAttribute(
           ts.createIdentifier("data-_position"),

@@ -53,3 +53,7 @@ export const memoryUnit = (1024 * 1024 / 100).toString()
 export function isNotExecutableStatement(node: ts.Node) {
   return node.modifiers && node.modifiers.some((m) => m.kind === ts.SyntaxKind.DeclareKeyword)
 }
+
+export function mutable<T>(object: T) {
+  return object as { -readonly [P in keyof T]: T[P] }
+}

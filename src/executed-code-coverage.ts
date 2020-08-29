@@ -1,5 +1,5 @@
 import * as ts from 'typescript'
-import { getFileName, isNotExecutableStatement } from './util'
+import { getFileName, isNotExecutableStatement, mutable } from './util'
 
 /**
  * @public
@@ -13,16 +13,19 @@ export const executedCodeCoverageTransformer: ts.TransformerFactory<ts.SourceFil
     }
     if (ts.isBlock(node)) {
       transformStatements(sourceFile, node, allCode).map((s) => disabledStatements.add(s))
-    } else if (ts.isArrowFunction(node) && !ts.isBlock(node.body)) {
-      const start = node.body.getStart(sourceFile)
-      const returnStatement = ts.createReturn(node.body)
-      node.body = ts.createBlock(
-        [
-          returnStatement
-        ],
-        true
-      )
-      transformStatements(sourceFile, node.body, allCode, start).map((s) => disabledStatements.add(s))
+    } else if (ts.isArrowFunction(node)) {
+      const newNode = mutable(node)
+      if (!ts.isBlock(newNode.body)) {
+        const start = newNode.body.getStart(sourceFile)
+        const returnStatement = ts.createReturn(newNode.body)
+        newNode.body = ts.createBlock(
+          [
+            returnStatement
+          ],
+          true
+        )
+        transformStatements(sourceFile, newNode.body, allCode, start).map((s) => disabledStatements.add(s))
+      }
     }
     return ts.visitEachChild(node, visitor, context)
   }
@@ -31,7 +34,7 @@ export const executedCodeCoverageTransformer: ts.TransformerFactory<ts.SourceFil
   const result = ts.visitNode(sourceFile, visitor)
 
   const fileName = getFileName(sourceFile)
-  sourceFile.statements = ts.createNodeArray([
+  mutable(sourceFile).statements = ts.createNodeArray([
     ts.createVariableStatement(
       undefined,
       ts.createVariableDeclarationList(
