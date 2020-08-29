@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.10.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.9.0...v1.10.0) (2020-08-29)
+  
+* feat: support codeTimeTransformerFactory ([6246e88](https://github.com/plantain-00/ts-transformers-plantain/commit/6246e88fab1f90ac7bd0aef6cf47565cd13786a0))
+
 ## [1.9.0](https://github.com/plantain-00/ts-transformers-plantain/compare/v1.8.0...v1.9.0) (2020-08-29)
   
 * feat: support typescript 4 ([0412dde](https://github.com/plantain-00/ts-transformers-plantain/commit/0412ddef89e6d7af5af8659fe96bb83a5be657e1))
