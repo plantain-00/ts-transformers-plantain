@@ -4,7 +4,7 @@ import { getFunctionName, isDisabled, getPosition, isNotExecutableStatement } fr
 /**
  * @public
  */
-export const codeTimeTransformer: ts.TransformerFactory<ts.SourceFile> = (context) => sourceFile => {
+export const codeTimeTransformerFactory: (options?: Partial<CodeTimeTransformerFactoryOptions>) => ts.TransformerFactory<ts.SourceFile> = (options) => (context) => sourceFile => {
   const disabledStatements = new Set<ts.Node>()
   const visitor = (node: ts.Node, functionName?: string): ts.Node => {
     if (disabledStatements.has(node)) {
@@ -15,12 +15,26 @@ export const codeTimeTransformer: ts.TransformerFactory<ts.SourceFile> = (contex
       functionName = newFunctionName
     }
     if (ts.isBlock(node)) {
-      transformStatements(sourceFile, node, functionName).map((s) => disabledStatements.add(s))
+      transformStatements(sourceFile, node, options, functionName).map((s) => disabledStatements.add(s))
     }
     return ts.visitEachChild(node, (node) => visitor(node, functionName), context)
   }
-  transformStatements(sourceFile, sourceFile).map((s) => disabledStatements.add(s))
+  transformStatements(sourceFile, sourceFile).map((s) => disabledStatements.add(s), options)
   return ts.visitNode(sourceFile, visitor)
+}
+
+/**
+ * @public
+ */
+export interface CodeTimeTransformerFactoryOptions {
+  threshold: number
+}
+
+/**
+ * @public
+ */
+export const codeTimeTransformer: ts.TransformerFactory<ts.SourceFile> = (context) => sourceFile => {
+  return codeTimeTransformerFactory()(context)(sourceFile)
 }
 
 let index = 0
@@ -28,6 +42,7 @@ let index = 0
 function transformStatements(
   sourceFile: ts.SourceFile,
   node: { statements: ts.NodeArray<ts.Statement> },
+  options?: Partial<CodeTimeTransformerFactoryOptions>,
   functionName?: string,
 ) {
   const disabledStatements: ts.Statement[] = []
@@ -57,6 +72,27 @@ function transformStatements(
     }
     const position = getPosition(sourceFile, statement.getStart(sourceFile), functionName)
     const variableName = '_code_time_' + index++
+    const now = ts.createCall(
+      ts.createPropertyAccess(
+        ts.createIdentifier("Date"),
+        ts.createIdentifier("now")
+      ),
+      undefined,
+      []
+    )
+    const condition = options?.threshold ? ts.createBinary(
+      ts.createBinary(
+        now,
+        ts.createToken(ts.SyntaxKind.MinusToken),
+        ts.createIdentifier(variableName)
+      ),
+      ts.createToken(ts.SyntaxKind.GreaterThanEqualsToken),
+      ts.createNumericLiteral(options.threshold.toString())
+    ) : ts.createBinary(
+      now,
+      ts.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
+      ts.createIdentifier(variableName)
+    )
     statements.push(
       ts.createVariableStatement(
         undefined,
@@ -78,18 +114,7 @@ function transformStatements(
       ),
       statement,
       ts.createIf(
-        ts.createBinary(
-          ts.createCall(
-            ts.createPropertyAccess(
-              ts.createIdentifier("Date"),
-              ts.createIdentifier("now")
-            ),
-            undefined,
-            []
-          ),
-          ts.createToken(ts.SyntaxKind.ExclamationEqualsEqualsToken),
-          ts.createIdentifier(variableName)
-        ),
+        condition,
         ts.createBlock(
           [ts.createExpressionStatement(ts.createCall(
             ts.createPropertyAccess(

@@ -1,7 +1,7 @@
 import * as webpack from 'webpack'
 import {
   executedCodeTransformer,
-  codeTimeTransformer,
+  codeTimeTransformerFactory,
   lastExecutingCodeTransformer,
   codeMemoryBrowserTransformer,
   executedCodeCoverageTransformer,
@@ -31,7 +31,7 @@ export default {
           getCustomTransformers: () => ({
             before: [
               executedCodeTransformer,
-              codeTimeTransformer,
+              codeTimeTransformerFactory({ threshold: 1000 }),
               lastExecutingCodeTransformer,
               codeMemoryBrowserTransformer,
               executedCodeCoverageTransformer,

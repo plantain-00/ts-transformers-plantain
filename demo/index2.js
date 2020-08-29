@@ -154,7 +154,7 @@ for (let i = 0; i < 4; i++) {
     if (_code_memory_browser_changes_7 > 10485.76) {
         console.debug("[code memory browser]demo/index.tsx:5:3: +" + Math.round(_code_memory_browser_changes_7 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_7 / 10485.76) / 100) + "MB");
     }
-    if (Date.now() !== _code_time_7) {
+    if (Date.now() - _code_time_7 >= 1000) {
         console.debug("[code time]demo/index.tsx:5:3: " + (Date.now() - _code_time_7) + "ms");
     }
     _lastExecutingCode = "demo/index.tsx:10:3";
@@ -206,7 +206,7 @@ try {
     if (_code_memory_browser_changes_10 > 10485.76) {
         console.debug("[code memory browser]demo/index.tsx:16:3: +" + Math.round(_code_memory_browser_changes_10 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_10 / 10485.76) / 100) + "MB");
     }
-    if (Date.now() !== _code_time_8) {
+    if (Date.now() - _code_time_8 >= 1000) {
         console.debug("[code time]demo/index.tsx:16:3: " + (Date.now() - _code_time_8) + "ms");
     }
 }
@@ -222,7 +222,7 @@ catch {
     if (_code_memory_browser_changes_11 > 10485.76) {
         console.debug("[code memory browser]demo/index.tsx:19:3: +" + Math.round(_code_memory_browser_changes_11 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_11 / 10485.76) / 100) + "MB");
     }
-    if (Date.now() !== _code_time_9) {
+    if (Date.now() - _code_time_9 >= 1000) {
         console.debug("[code time]demo/index.tsx:19:3: " + (Date.now() - _code_time_9) + "ms");
     }
 }
@@ -270,7 +270,7 @@ function bar() {
         if (_code_memory_browser_changes_14 > 10485.76) {
             console.debug("[code memory browser]demo/index.tsx:32:5 baz: +" + Math.round(_code_memory_browser_changes_14 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_14 / 10485.76) / 100) + "MB");
         }
-        if (Date.now() !== _code_time_11) {
+        if (Date.now() - _code_time_11 >= 1000) {
             console.debug("[code time]demo/index.tsx:32:5 baz: " + (Date.now() - _code_time_11) + "ms");
         }
     }
@@ -285,7 +285,7 @@ function bar() {
     if (_code_memory_browser_changes_13 > 10485.76) {
         console.debug("[code memory browser]demo/index.tsx:34:3 bar: +" + Math.round(_code_memory_browser_changes_13 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_13 / 10485.76) / 100) + "MB");
     }
-    if (Date.now() !== _code_time_10) {
+    if (Date.now() - _code_time_10 >= 1000) {
         console.debug("[code time]demo/index.tsx:34:3 bar: " + (Date.now() - _code_time_10) + "ms");
     }
 }
@@ -305,7 +305,7 @@ class A {
         if (_code_memory_browser_changes_15 > 10485.76) {
             console.debug("[code memory browser]demo/index.tsx:39:5 A.b: +" + Math.round(_code_memory_browser_changes_15 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_15 / 10485.76) / 100) + "MB");
         }
-        if (Date.now() !== _code_time_12) {
+        if (Date.now() - _code_time_12 >= 1000) {
             console.debug("[code time]demo/index.tsx:39:5 A.b: " + (Date.now() - _code_time_12) + "ms");
         }
     }
@@ -321,7 +321,7 @@ class A {
         if (_code_memory_browser_changes_16 > 10485.76) {
             console.debug("[code memory browser]demo/index.tsx:42:5 A.constructor: +" + Math.round(_code_memory_browser_changes_16 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_16 / 10485.76) / 100) + "MB");
         }
-        if (Date.now() !== _code_time_13) {
+        if (Date.now() - _code_time_13 >= 1000) {
             console.debug("[code time]demo/index.tsx:42:5 A.constructor: " + (Date.now() - _code_time_13) + "ms");
         }
     }
@@ -343,7 +343,7 @@ class A {
         if (_code_memory_browser_changes_17 > 10485.76) {
             console.debug("[code memory browser]demo/index.tsx:48:5 A.c: +" + Math.round(_code_memory_browser_changes_17 / 10485.76) / 100 + "MB -> " + (Math.round(_code_memory_browser_after_17 / 10485.76) / 100) + "MB");
         }
-        if (Date.now() !== _code_time_14) {
+        if (Date.now() - _code_time_14 >= 1000) {
             console.debug("[code time]demo/index.tsx:48:5 A.c: " + (Date.now() - _code_time_14) + "ms");
         }
     }

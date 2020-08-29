@@ -46,6 +46,8 @@ For example:
 logger can be disabled by `code-time:disable` in comment.
 children logger can be disabled by `code-time:disable-children` in comment.
 
+`codeTimeTransformerFactory({ threshold: 1000 })` can be used to log only when code time >= the threshold (`>=1000ms` for this example)
+
 ### lastExecutingCodeTransformer
 
 It can be used to record last executing code before exception, it's useful for environment without stacktrace or clear error message, eg, ExtendScript.
