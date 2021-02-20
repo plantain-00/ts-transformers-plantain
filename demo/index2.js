@@ -17,6 +17,7 @@
 /******/ 	})();
 /******/ 	
 /************************************************************************/
+var __webpack_exports__ = {};
 
 const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : __webpack_require__.g;
 if (!_global._executedCode) {
